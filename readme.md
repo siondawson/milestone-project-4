@@ -17,3 +17,9 @@ For this project I have chosen to understake a full redesign of Absolute Zero Vi
 Absolute Zero Viola Quartet create their own arrangements of popular public domain classical pieces. Their current website has a functioning sheet music store where users may select and buy sheet music, with one major issue: once paid for users must wait for a member of the band to email their purchases to them in the form of a pdf file. My redesign will generally improve the webstore user experience and add one key feature:
 
 Once users have paid for an arragement it will be available for them to download. If a user loses the pdf, they may log back in to the website and download again.
+
+# Apps
+
+## Band App
+
+An app for all content for the band itself: info, videos, concert listings, biographies.
