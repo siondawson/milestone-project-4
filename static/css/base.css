@@ -2,8 +2,12 @@ html {
     height: 100%;
 }
 
-.home-img-banner {
+.home-img-carousel {
     background: url('/media/website-images/screen-grab-8.jpg') no-repeat center center fixed;
     background-size: cover;
-    height: 50vh;
+}
+
+#home-img-carousel .carousel-inner,
+.carousel-item.active {
+    height: 33vh;
 }
