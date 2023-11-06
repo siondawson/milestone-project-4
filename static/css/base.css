@@ -1,0 +1,9 @@
+html {
+    height: 100%;
+}
+
+.home-img-banner {
+    background: url('/media/website-images/screen-grab-8.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 50vh;
+}
