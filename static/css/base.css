@@ -4,6 +4,12 @@ html {
     overflow-x: hidden;
 }
 
+body {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
 .home-img-carousel {
     background: url('/media/website-images/screen-grab-8.jpg') no-repeat center center fixed;
     background-size: cover;
