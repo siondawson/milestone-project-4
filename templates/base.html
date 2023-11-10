@@ -59,9 +59,10 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{% url 'sheetmusic' %}">All Sheet Music</a></li>
-                                        <li><a class="dropdown-item" href="#">Quartet</a></li>
-                                        <li><a class="dropdown-item" href="#">Trio</a></li>
-                                        <li><a class="dropdown-item" href="#">Duo</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'sheetmusic' %}?category=ensemble">Large Ensemble</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'sheetmusic' %}?category=quartet">Quartet</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'sheetmusic' %}?category=trio">Trio</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'sheetmusic' %}?category=duo">Duo</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
