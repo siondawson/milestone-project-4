@@ -13,10 +13,11 @@
 
 <div class="container">
     <div class="row">
+        <!-- displays results from search query -->
         {% if search_term %}
             <h2>Search Results for "{{ search_term }}"</h2>
         {% endif %}
-        {% for sheetmusic in filtered_sheetmusic %}
+        {% for sheetmusic in searched_sheetmusic %}
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 m-3">
                 <div class="card" style="width: 18rem;">
                     <a href="{% url 'sheetmusic_detail' sheetmusic.id %}">

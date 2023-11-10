@@ -10,30 +10,31 @@ def all_sheetmusic(request):
     allsheetmusic = Sheetmusic.objects.all()
     query = None
     categories = None
-    filtered_sheetmusic = allsheetmusic
+    searched_sheetmusic = allsheetmusic
 
     if request.GET:
         print("Get request made")
         if 'category' in request.GET:
-            categories = request.GET.getlist('category')
-            filtered_sheetmusic = filtered_sheetmusic.filter(category__name__in=categories)
+            print("filtering")
+            categories = request.GET['category']
+            filtered_sheetmusic = allsheetmusic.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
         if 'q' in request.GET:
-            print("query made")
+            print("Searched")
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('sheetmusic'))
 
             queries = Q(title__icontains=query) | Q(description__icontains=query) | Q(composer_firstname__icontains=query) | Q(composer_lastname__icontains=query)
-            filtered_sheetmusic = filtered_sheetmusic.filter(queries)
+            searched_sheetmusic = searched_sheetmusic.filter(queries)
     else:
         print("No get request")
 
     context = {
         'allsheetmusic': allsheetmusic,
-        'filtered_sheetmusic': filtered_sheetmusic,
+        'searched_sheetmusic': searched_sheetmusic,
         'search_term': query,
         'current_categories': categories,
     }
