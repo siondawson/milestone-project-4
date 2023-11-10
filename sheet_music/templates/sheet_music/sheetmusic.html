@@ -13,20 +13,42 @@
 
 <div class="container">
     <div class="row">
-        {% for sheetmusic in allsheetmusic %}
-        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 m-3">
-            <div class="card" style="width: 18rem;">
-                <a href="{% url 'sheetmusic_detail' sheetmusic.id %}">
-                    <img src="{{ sheetmusic.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                </a>
-                <div class="card-body">
-                    <p class="card-title">{{ sheetmusic.composer_lastname }} - {{ sheetmusic.title }}</p>
-                    <p class="card-text">£{{ sheetmusic.price }}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+        {% if search_term %}
+            <h2>Search Results for "{{ search_term }}"</h2>
+        {% endif %}
+        {% for sheetmusic in filtered_sheetmusic %}
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 m-3">
+                <div class="card" style="width: 18rem;">
+                    <a href="{% url 'sheetmusic_detail' sheetmusic.id %}">
+                        <img src="{{ sheetmusic.image.url }}" class="card-img-top" alt="{{ sheetmusic.name }}">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-title">{{ sheetmusic.composer_lastname }} - {{ sheetmusic.title }}</p>
+                        <p class="card-text">£{{ sheetmusic.price }}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
+
+        {% if not search_term %}
+            <!-- Display all sheet music when not searching -->
+            {% for sheetmusic in allsheetmusic %}
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 m-3">
+                    <div class="card" style="width: 18rem;">
+                        <a href="{% url 'sheetmusic_detail' sheetmusic.id %}">
+                            <img src="{{ sheetmusic.image.url }}" class="card-img-top" alt="{{ sheetmusic.name }}">
+                        </a>
+                        <div class="card-body">
+                            <p class="card-title">{{ sheetmusic.composer_lastname }} - {{ sheetmusic.title }}</p>
+                            <p class="card-text">£{{ sheetmusic.price }}</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
 </div>
+
 {% endblock %}
