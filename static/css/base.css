@@ -19,3 +19,11 @@ body {
 .carousel-item.active {
     height: 33vh;
 }
+
+
+/* sheetmusic details */
+
+
+sheetmusic-image-container {
+    imag: 50%;
+}
