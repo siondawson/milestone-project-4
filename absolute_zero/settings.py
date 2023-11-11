@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'band',
     'sheet_music',
+    'basket',
 
 
 ]
