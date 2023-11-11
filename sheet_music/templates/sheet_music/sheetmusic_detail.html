@@ -50,10 +50,25 @@
   
               
             </div>
-  
-              <!-- col.// -->
               
-            <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+            <!-- <a href="#" class=""> 
+              <span class="material-symbols-outlined"> shopping_basket </span> Add to basket 
+            </a> -->
+            <form  class="form" action="{% url 'add_to_basket' sheetmusic.id %}" method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                  <div class="col-12">
+                      <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="1" data-item_id="{{ sheetmusic.id }}" id="id_qty_{{ sheetmusic.id }}">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-12">
+                      <input type="submit" class="btn btn-primary shadow-0" value="Add to basket">
+                  </div>
+                </div>
+                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                
+            </form>
           </div>
         </main>
       </div>
