@@ -12,11 +12,13 @@ def add_to_basket(request, sheetmusic_id):
     """ add sheet music to shopping basket """
 
     quantity = int(request.POST.get('quantity'))
+    print(quantity)
     redirect_url = request.POST.get('redirect_url')
     basket = request.session.get('basket', {})
 
     if sheetmusic_id in list(basket.keys()):
-        messages('you allready have this item in your basket')
+        basket[sheetmusic_id] += quantity
+        
     else:
         basket[sheetmusic_id] = quantity
 
