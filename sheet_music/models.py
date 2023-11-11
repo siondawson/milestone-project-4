@@ -4,6 +4,10 @@ from django.db import models
 
 
 class Category(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -16,7 +20,7 @@ class Category(models.Model):
 
 class Sheetmusic(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
-    title = models.CharField(max_length=254)
+    name = models.CharField(max_length=254)
     composer_firstname = models.CharField(max_length=254)
     composer_lastname = models.CharField(max_length=254)
     arranger = models.CharField(max_length=254, null=True, blank=True)
@@ -26,4 +30,4 @@ class Sheetmusic(models.Model):
     pdf_file = models.FileField(upload_to='pdf')
 
     def __str__(self):
-        return self.title
+        return self.name
