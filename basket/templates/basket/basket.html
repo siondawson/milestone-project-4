@@ -26,6 +26,9 @@
                                 <th scope="col">Price</th>
                                 <th scope="col">Qty</th>
                                 <th scope="col">Subtotal</th>
+                                <th scope="col">
+                                    <a class="remove-item text-danger float-right" id="remove_{{ sheetmusic.sheetmusic_id }}"><small>Remove</small></a>
+                                </th>
                             </tr>
                         </thead>
 
@@ -48,6 +51,9 @@
                                     <p class="my-0">${{ item.sheetmusic.price }}</p>
                                 </td>
                             </tr>
+                            <form class="form update-form" method="POST" action="">
+                                {% csrf_token %}
+                            </form>
                         {% endfor %}
                         <tr>
                             <td colspan="5" class="pt-5 text-right">
@@ -85,4 +91,24 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+
+<script type="text/javascript">
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/bag/remove/${itemId}`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
 {% endblock %}
