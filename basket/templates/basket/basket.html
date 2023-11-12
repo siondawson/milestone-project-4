@@ -49,16 +49,17 @@
                                     <p class="my-0">{{ item.quantity }}</p>
                                 </td>
                                 <td class="py-3">
-                                    <p class="my-0">${{ item.sheetmusic.price }}</p>
+                                    <p class="my-0">${{ item.sheetmusic.price | calc_subtotal:item.quantity }}</p>
                                 </td>
                                 <td class="py-3">
                                     <a class="remove-item text-danger float-right" id="remove_{{ item.sheetmusic_id }}"><small>Remove</small></a>
                                     <div>remove_{{ item.sheetmusic_id }}</div>
                                 </td>
-                            </tr>
                             <form class="form update-form" method="POST" action="{% url 'remove_from_basket' item.sheetmusic_id %}">
                                 {% csrf_token %}
                             </form>
+                            
+                        </tr>
                         {% endfor %}
                         <tr>
                             <td colspan="5" class="pt-5 text-right">
