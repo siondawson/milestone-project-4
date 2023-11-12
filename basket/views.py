@@ -37,8 +37,9 @@ def remove_from_basket(request, sheetmusic_id):
         sheet_music = get_object_or_404(Sheetmusic, pk=sheetmusic_id)
         print(sheet_music)
         basket = request.session.get('basket', {})
+        print(basket)
         basket.pop(sheetmusic_id)
-        messages.success(request, f'Removed {sheetmusic.name} from your bag')
+
 
         request.session['basket'] = basket
         return HttpResponse(status=200)
