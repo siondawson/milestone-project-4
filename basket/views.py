@@ -1,6 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import (
+    render, redirect, HttpResponse, get_object_or_404)
+from django.contrib import messages
 
-# Create your views here.
+from sheet_music.models import Sheetmusic
+
 
 def view_basket(request):
     """ a view to rednder the basket contents page """
@@ -18,7 +21,6 @@ def add_to_basket(request, sheetmusic_id):
 
     if sheetmusic_id in list(basket.keys()):
         basket[sheetmusic_id] += quantity
-        
     else:
         basket[sheetmusic_id] = quantity
 
@@ -26,3 +28,20 @@ def add_to_basket(request, sheetmusic_id):
     print(request.session['basket'])
 
     return redirect(redirect_url)
+
+
+def remove_from_basket(request, sheetmusic_id):
+    """ Remove item from basket """
+    try:   
+
+        sheet_music = get_object_or_404(Sheetmusic, pk=sheetmusic_id)
+        print(sheet_music)
+        basket = request.session.get('basket', {})
+        basket.pop(sheetmusic_id)
+        messages.success(request, f'Removed {sheetmusic.name} from your bag')
+
+        request.session['basket'] = basket
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        return HttpResponse(status=500)
