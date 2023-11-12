@@ -40,7 +40,7 @@ body {
     cursor: pointer;
 }
 
-.message-container {
+/* .message-container {
     position: fixed;
     top: 72px;
     right: 15px;
@@ -53,4 +53,4 @@ body {
 
 .toast-capper {
     height: 2px;
-}
+} */
