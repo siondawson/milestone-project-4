@@ -14,6 +14,7 @@ def view_basket(request):
 def add_to_basket(request, sheetmusic_id):
     """ add sheet music to shopping basket """
 
+    sheetmusic = Sheetmusic.objects.get(pk=sheetmusic_id)
     quantity = int(request.POST.get('quantity'))
     print(quantity)
     redirect_url = request.POST.get('redirect_url')
@@ -23,6 +24,7 @@ def add_to_basket(request, sheetmusic_id):
         basket[sheetmusic_id] += quantity
     else:
         basket[sheetmusic_id] = quantity
+        messages.success(request, f'Added {sheetmusic.name} to your bag')
 
     request.session['basket'] = basket
     print(request.session['basket'])
