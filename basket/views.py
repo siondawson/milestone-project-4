@@ -37,12 +37,10 @@ def remove_from_basket(request, sheetmusic_id):
     try:   
 
         sheet_music = get_object_or_404(Sheetmusic, pk=sheetmusic_id)
-        print(sheet_music)
         basket = request.session.get('basket', {})
-        print(basket)
-        basket.pop(sheetmusic_id)
-
-
+        basket.pop(sheetmusic_id)  # currently adding message below this line causing 500 error internal server error.
+        
+        
         request.session['basket'] = basket
         return HttpResponse(status=200)
 

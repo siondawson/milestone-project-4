@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'band',
     'sheet_music',
     'basket',
+    'checkout',
 
 
 ]
