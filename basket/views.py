@@ -24,7 +24,7 @@ def add_to_basket(request, sheetmusic_id):
         basket[sheetmusic_id] += quantity
     else:
         basket[sheetmusic_id] = quantity
-        messages.success(request, f'Added {sheetmusic.name} to your bag')
+        messages.success(request, f'Added {sheetmusic.name} to your basket')
 
     request.session['basket'] = basket
     print(request.session['basket'])

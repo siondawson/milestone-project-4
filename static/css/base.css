@@ -40,11 +40,11 @@ body {
     cursor: pointer;
 }
 
-.toast {
-    position: fixed;
-    top: 72px;
-    right: 15px;
-    z-index: 9999999999;
+.message-container {
+    position: fixed !important;
+    top: 72px !important;
+    right: 15px !important;
+    z-index: 9999999999 !important;
 }
 
 .custom-toast {
@@ -53,4 +53,9 @@ body {
 
 .toast-capper {
     height: 2px;
-} */
+} 
+
+.toast-img {
+    max-width: 100px;
+    max-height: 200px;
+}
