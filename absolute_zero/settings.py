@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-f6oyfxy)&pm_gpj3_=$*^ko)ul4v!6u^yv)niy$#$#6*l&ci6h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-siondawson-milestone-pro-8d1ayvf1xa.us2.codeanyapp.com', '8000-siondawson-milestonepro-ire3zvp3mu6.ws-eu106.gitpod.io']
+ALLOWED_HOSTS = ['8000-siondawson-milestone-pro-8d1ayvf1xa.us2.codeanyapp.com', '8000-siondawson-milestonepro-ire3zvp3mu6.ws-eu106.gitpod.io', '8000-siondawson-milestonepro-vh99hku1iek.ws-eu106.gitpod.io']
 
 
 # Application definition
