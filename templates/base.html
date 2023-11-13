@@ -163,10 +163,28 @@
     {% block postloadjs %}
 
     <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", () => {
-            const myToast = new bootstrap.Toast('.toast');
-            myToast.show();
-        });
+
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        var toastList = toastElList.map(function (toastEl) {
+            return new bootstrap.Toast(toastEl)
+        })
+
+
+        for (let toast of toastList) {
+                console.log('toasting')
+                toast.show()
+            }
+
+        // $(document).ready(function () {
+        //     $("#myBtn").click(function () {
+        //         console.log('toasting');
+        //         $("#myToast").toast("show");
+        //     });
+        // });
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     const myToast = new bootstrap.Toast('.toast');
+        //     myToast.show();
+        // });
     </script>
 
     {% endblock %}
