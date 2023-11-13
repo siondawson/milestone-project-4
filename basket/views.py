@@ -40,7 +40,6 @@ def remove_from_basket(request, sheetmusic_id):
         basket = request.session.get('basket', {})
         basket.pop(sheetmusic_id)  # currently adding message below this line causing 500 error internal server error.
         
-        
         request.session['basket'] = basket
         return HttpResponse(status=200)
 
