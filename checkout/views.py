@@ -50,6 +50,7 @@ def checkout(request):
         basket = request.session.get('basket', {})
         if not basket:
             messages.error(request, "There's nothing in your basket at the moment")
+            print(order_form.errors.as_data())
             return redirect(reverse('sheetmusic'))
 
         current_basket = basket_contents(request)
@@ -60,9 +61,10 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-
-
+        
         order_form = OrderForm()
+
+        
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. Did you forget to set it in your environment?')
