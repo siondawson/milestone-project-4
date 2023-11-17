@@ -22,10 +22,18 @@ def checkout(request):
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'country': request.POST['country'],
+            'postcode': request.POST['postcode'],
+            'town_or_city': request.POST['town_or_city'],
+            'street_address1': request.POST['street_address1'],
+            'street_address2': request.POST['street_address2'],
+            'county': request.POST['county'],
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save()
+            print(order)
 
             for sheetmusic_id, sheetmusic_data in basket.items():
                 try:
@@ -34,20 +42,22 @@ def checkout(request):
                         order_line_item = OrderLineItem(
                             order=order,
                             sheetmusic=sheetmusic,
-                            quantity=quantity
+                            quantity=sheetmusic_data,
                         )
-                    order_line_item.save()
+                        print("This is the order_line_item", order_line_item)
+                        order_line_item.save()
                 except Sheetmusic.DoesNotExist:
                     messages.error(request, "One of the titles in your basket wasn't found in our database! Please get in touch for help!")
                     order.delete()
                     return redirect(reverse('view_basket'))
-            return redirect(reverse('checkout-success', args=[order.order_number]))
+            return redirect(reverse('checkout_success', args=[order.order_number]))
 
         else:
             messages.error(request, 'There was an error with your form. Please double check your information')
     else:
 
         basket = request.session.get('basket', {})
+        
         if not basket:
             messages.error(request, "There's nothing in your basket at the moment")
             print(order_form.errors.as_data())
@@ -61,14 +71,11 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        
-        order_form = OrderForm()
 
-        
+        order_form = OrderForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. Did you forget to set it in your environment?')
-
 
 
     template = 'checkout/checkout.html'
@@ -87,7 +94,7 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, f'Order successfully processed! Your order number is {order.number}.  \
+    messages.success(request, f'Order successfully processed! Your order number is {order.order_number}.  \
                                 A confirmation email will be sent to {order.email}. \
                                 Your sheet music is available to download right away')
 
