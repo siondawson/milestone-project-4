@@ -24,7 +24,43 @@
         </div>
         <div class="row">
             <div class="col-12">
-
+                <p>Order number</p>
+            </div>
+            <div class="col-12">
+                <p>{{ order.order_number }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>Order Date</p>
+            </div>
+            <div class="col-12">
+                <p>{{ order.date }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>Order Details</p>
+            </div>
+        </div>
+        {% for item in order.lineitems.all %}
+        <div class="row">
+            <div class="col-12">
+                <p>{{ item.sheetmusic.name }}</p>
+            </div>
+            <div class="col-12">
+                <p>
+                    {{ item.quantity }} £{{ item.sheetmusic.price }}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-12">
+                <p>Billing:</p>
+            </div>
+            <div class="col-12">
+                <p>{{ order.grand_total }}</p>
             </div>
         </div>
     </div>
