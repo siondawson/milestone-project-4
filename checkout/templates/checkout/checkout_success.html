@@ -64,4 +64,9 @@
             </div>
         </div>
     </div>
+    {% if from_profile %}
+        <a class="btn btn-info" href="{% url 'profile' %}">Back to profile</a>
+    {% else %}
+        <h2>LATEST DEALS</h2>
+    {% endif %}
 {% endblock %}
