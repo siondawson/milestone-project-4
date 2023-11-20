@@ -59,3 +59,15 @@ body {
     max-width: 100px;
     max-height: 200px;
 }
+
+
+/* Allauth formatting */
+
+.allauth-form-inner-content p {
+    margin-top: 1.5rem;
+}
+
+.allauth-form-inner-content input {
+    border-color: #000;
+    border-radius: 0;
+}
