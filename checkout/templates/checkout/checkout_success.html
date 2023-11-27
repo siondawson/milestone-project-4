@@ -50,8 +50,11 @@
             </div>
             <div class="col-12">
                 <p>
-                    {{ item.quantity }} £{{ item.sheetmusic.price }}
+                    {{ item.quantity }} x £{{ item.sheetmusic.price }}
                 </p>
+            </div>
+            <div class="col-12">
+                <a class="btn btn-warning" href="{{ item.sheetmusic.pdf_file }}" target="_blank" >Download "{{ item.sheetmusic.name }}"</a>
             </div>
         </div>
         {% endfor %}
@@ -67,6 +70,5 @@
     {% if from_profile %}
         <a class="btn btn-info" href="{% url 'profile' %}">Back to profile</a>
     {% else %}
-        <h2>LATEST DEALS</h2>
     {% endif %}
 {% endblock %}
