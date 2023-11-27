@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from .models import Sheetmusic, Category
+from .forms import SheetmusicForm
 
 # Create your views here.
 
@@ -54,4 +55,16 @@ def sheetmusic_detail(request, sheetmusic_id):
         'sheetmusic': sheetmusic,
         }
     return render(request, 'sheet_music/sheetmusic_detail.html', context)
+
+
+def add_sheetmusic(request):
+    """ Add sheetmusic to store """
+
+    form = SheetmusicForm()
+    template = 'sheet_music/add_sheetmusic.html'
+    context = {
+        'form': form
+    }
+
+    return render(request, template, context)
 
