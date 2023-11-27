@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-12 g-0">
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                        <a class="navbar-brand" href="#">Absolute Zero</a>
+                        <a class="navbar-brand" href="{% url 'band' %}">Absolute Zero</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -53,7 +53,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    <a class="nav-link active" aria-current="page" href="{% url 'band' %}">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Login</a>
@@ -79,7 +79,7 @@
                                     <ul class="dropdown-menu">
                                         {% if request.user.is_authenticated %}
                                             {% if request.user.is_superuser %}
-                                                <li><a class="dropdown-item" href="">Sheetmusic management</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'add_sheetmusic' %}">Sheetmusic management</a></li>
                                             {% endif %}
                                             <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
                                             <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>

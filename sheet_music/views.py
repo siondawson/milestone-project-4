@@ -60,7 +60,17 @@ def sheetmusic_detail(request, sheetmusic_id):
 def add_sheetmusic(request):
     """ Add sheetmusic to store """
 
-    form = SheetmusicForm()
+    if request.method == 'POST':
+        form = SheetmusicForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Sheetmusic added to store!')
+            return redirect(reverse('add_sheetmusic'))
+        else:
+            messages.error(request, 'Failed to add sheetmusic. Please ensure form is valid and try again.')
+    else:
+        form = SheetmusicForm()
+        
     template = 'sheet_music/add_sheetmusic.html'
     context = {
         'form': form
