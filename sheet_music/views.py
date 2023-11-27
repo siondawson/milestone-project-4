@@ -78,3 +78,18 @@ def add_sheetmusic(request):
 
     return render(request, template, context)
 
+
+def edit_sheetmusic(request, sheetmusic_id):
+    """ A view to edit sheetmusic """
+
+    sheetmusic = get_object_or_404(Sheetmusic, pk=sheetmusic_id)
+    form = SheetmusicForm(instance=sheetmusic)
+    messages.info(request, f'You are editing {sheetmusic.name}')
+
+    template = 'sheet_music/edit_sheetmusic.html'
+    context = {
+        'form': form,
+        'sheetmusic': sheetmusic,
+    }
+
+    return render(request, template, context)
