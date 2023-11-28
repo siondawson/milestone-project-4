@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Sheetmusic, Category
 from .forms import SheetmusicForm
@@ -57,8 +58,13 @@ def sheetmusic_detail(request, sheetmusic_id):
     return render(request, 'sheet_music/sheetmusic_detail.html', context)
 
 
+@login_required
 def add_sheetmusic(request):
     """ Add sheetmusic to store """
+
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse('band'))
 
     if request.method == 'POST':
         form = SheetmusicForm(request.POST, request.FILES)
@@ -78,9 +84,13 @@ def add_sheetmusic(request):
 
     return render(request, template, context)
 
-
+@login_required
 def edit_sheetmusic(request, sheetmusic_id):
     """ A view to edit sheetmusic """
+
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse('band'))
 
     sheetmusic = get_object_or_404(Sheetmusic, pk=sheetmusic_id)
 
@@ -104,9 +114,13 @@ def edit_sheetmusic(request, sheetmusic_id):
 
     return render(request, template, context)
 
-
+@login_required
 def delete_sheetmusic(request, sheetmusic_id):
     """A view for deleting sheet music from the store"""
+
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse('band'))
 
     sheetmusic = get_object_or_404(Sheetmusic, pk=sheetmusic_id)
     sheetmusic.delete()
