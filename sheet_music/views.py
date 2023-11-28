@@ -83,8 +83,18 @@ def edit_sheetmusic(request, sheetmusic_id):
     """ A view to edit sheetmusic """
 
     sheetmusic = get_object_or_404(Sheetmusic, pk=sheetmusic_id)
-    form = SheetmusicForm(instance=sheetmusic)
-    messages.info(request, f'You are editing {sheetmusic.name}')
+
+    if request.method == 'POST':
+        form = SheetmusicForm(request.POST, request.FILES, instance=sheetmusic)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated sheetmusic!')
+            return redirect(reverse('sheetmusic_detail', args=[sheetmusic.id]))
+        else:
+            messages.error(request, 'Failed to update sheetmusic. Please ensure form is valid')
+    else:    
+        form = SheetmusicForm(instance=sheetmusic)
+        messages.info(request, f'You are editing {sheetmusic.name}')
 
     template = 'sheet_music/edit_sheetmusic.html'
     context = {
