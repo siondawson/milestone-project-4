@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+if os.path.exists('env.py'):
+    import env
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f6oyfxy)&pm_gpj3_=$*^ko)ul4v!6u^yv)niy$#$#6*l&ci6h'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['8000-siondawson-milestone-pro-8d1ayvf1xa.us2.codeanyapp.com', '8000-siondawson-milestonepro-ire3zvp3mu6.ws-eu106.gitpod.io', '8000-siondawson-milestonepro-vh99hku1iek.ws-eu106.gitpod.io']
+ALLOWED_HOSTS = [
+    '8000-siondawson-milestone-pro-8d1ayvf1xa.us2.codeanyapp.com',
+    '8000-siondawson-milestonepro-ire3zvp3mu6.ws-eu106.gitpod.io',
+    '8000-siondawson-milestonepro-vh99hku1iek.ws-eu106.gitpod.io',
+    '127.0.0.1']
 
 
 # Application definition
@@ -126,7 +133,7 @@ WSGI_APPLICATION = 'absolute_zero.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
