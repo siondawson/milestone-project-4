@@ -47,6 +47,15 @@
   
               <dt class="col-3">Category:</dt>
               <dd class="col-9">Viola {{ sheetmusic.category.name }}</dd>
+
+              <div class="col-12">
+                {% if request.user.is_superuser %}
+                <small>
+                  <a class="text-info" href="{% url 'edit_sheetmusic' sheetmusic.id %}">Edit</a> |
+                  <a class="text-danger" href="{% url 'delete_sheetmusic' sheetmusic.id %}">Delete</a>
+                </small>
+                {% endif %}
+              </div>
   
               
             </div>

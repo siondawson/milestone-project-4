@@ -63,9 +63,9 @@ def add_sheetmusic(request):
     if request.method == 'POST':
         form = SheetmusicForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            sheetmusic = form.save()
             messages.success(request, 'Sheetmusic added to store!')
-            return redirect(reverse('add_sheetmusic'))
+            return redirect(reverse('sheetmusic_detail', args=[sheetmusic.id]))
         else:
             messages.error(request, 'Failed to add sheetmusic. Please ensure form is valid and try again.')
     else:
@@ -103,3 +103,12 @@ def edit_sheetmusic(request, sheetmusic_id):
     }
 
     return render(request, template, context)
+
+
+def delete_sheetmusic(request, sheetmusic_id):
+    """A view for deleting sheet music from the store"""
+
+    sheetmusic = get_object_or_404(Sheetmusic, pk=sheetmusic_id)
+    sheetmusic.delete()
+    messages.success(request, 'Product deleted!')
+    return redirect(reverse('sheetmusic'))

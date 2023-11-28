@@ -7,5 +7,6 @@ urlpatterns = [
     path('<int:sheetmusic_id>/', views.sheetmusic_detail, name='sheetmusic_detail'),
     path('add', views.add_sheetmusic, name='add_sheetmusic'),
     path('edit/<int:sheetmusic_id>/', views.edit_sheetmusic, name='edit_sheetmusic'),
+    path('delete/<int:sheetmusic_id>/', views.delete_sheetmusic, name='delete_sheetmusic'),
 
 ]
