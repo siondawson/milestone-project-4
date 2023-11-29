@@ -1,7 +1,7 @@
 {% load static %}
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
     {% block meta %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -39,7 +39,7 @@
     <title>Absolute Zero Viola Quartet {% block extra_title %}{% endblock %}</title>
     
   </head>
-  <body>
+  <body class="d-flex flec-column h-100">
     <!-- nav -->
     <header class="container-fluid">
         <div class="row">
@@ -76,7 +76,7 @@
                                     <ul class="dropdown-menu">
                                         {% if request.user.is_authenticated %}
                                             {% if request.user.is_superuser %}
-                                                <li><a class="dropdown-item" href="{% url 'add_sheetmusic' %}">Sheetmusic management</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'add_sheetmusic' %}">Add Sheetmusic</a></li>
                                             {% endif %}
                                             <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
                                             <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>

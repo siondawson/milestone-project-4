@@ -71,3 +71,63 @@ body {
     border-color: #000;
     border-radius: 0;
 }
+
+
+/* contact form */
+/* Similar styling approach to my milestone project 1 contact form */
+
+.form-section {
+    /* height: 100vh; */
+    background: url('/static/media/website-images/screen-grab-3.jpg') no-repeat center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-attachment: scroll;
+    
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex: 1 0 auto;
+
+}
+
+@media (min-width: 1000px) { /* This a workaround to get the background image to look nice on iOS. Background scroll is not compatible. Scroll functionality sacrificed for a background img that will cover the entire background. Solution suggested by tutor Ed.*/
+    .form-section {
+        background: url('/static/media/website-images/screen-grab-3.jpg') no-repeat center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-attachment: fixed;
+        
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        flex: 1 0 auto;
+    
+    }
+}
+
+.contact-form {
+    
+    color: #fff;
+    background-color: rgba(60,60,60,0.6);
+    max-width: 440px;
+    position: relative;
+    padding: 30px;
+    left: 10%
+    
+}
+
+@media screen and (max-width:510px) {   /* centers contact form div on small screens only (428px is iphone pro max screen width)*/
+    
+    .contact-form {
+        color: #fff;
+        background-color: rgba(60,60,60,0.6);
+        max-width: 440px;
+        position: relative;
+        padding: 30px;
+        left: 0%;
+    }
+}
