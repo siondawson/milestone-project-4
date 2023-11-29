@@ -23,7 +23,12 @@ def contact(request):
                 return HttpResponse("Invalid header found.")
             messages.success(request, "Email sent! We will respond as soon as possible")
             return redirect("success")
-    return render(request, "sendemail/email.html", {"form": form})
+        
+    template = "sendemail/email.html"
+    context = {
+        "form": form
+    }
+    return render(request, template, context)
 
 
 def success(request):
