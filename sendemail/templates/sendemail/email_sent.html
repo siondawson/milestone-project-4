@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="row"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center pt-5">
+                <h2>Thankyou!</h2>
+                <p>Your message has been sent. We aim to always respond within 24 hours.</p>
+                <a class="btn btn-primary" href="{% url 'band' %}">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
