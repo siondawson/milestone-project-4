@@ -33,4 +33,4 @@ class Sheetmusic(models.Model):
         return self.name
 
     def pdf_file_name(self):
-        return os.path.basename(self.pdf_file.name)
+        return os.path.basename(self.pdf_file)

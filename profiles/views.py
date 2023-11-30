@@ -5,7 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import UserProfile
 from .forms import UserProfileForm
+from django.conf import settings
 from django.http import FileResponse
+import os
 
 from checkout.models import Order
 from sheet_music.models import Sheetmusic
@@ -53,19 +55,13 @@ def order_history(request, order_number):
     return render(request, template, context)
 
 
-def download_sheetmusic(request, order_number, pdf_file):
+def download_sheetmusic(request, order_number, name, pdf_file):
 
-    pdf_file = pdf_file_name
-    print(pdf_file)
-    downloaded_sheetmusic = pdf_file
-    print(downloaded_sheetmusic)
-    messages.success(request, ('Sheetmusic downloaded!'))
-
-    context = {
-        'pdf_file': pdf_file
-    }
+    music = Sheetmusic.objects.get(name='Test EDITED')
+    print(music)
+    print(music.pdf_file)
+    print(music.pdf_file.path)
+    downloaded_sheetmusic = music.pdf_file.path
 
     response = FileResponse(open(downloaded_sheetmusic, 'rb'))
-    
     return response
-
