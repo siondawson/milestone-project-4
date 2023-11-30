@@ -1,10 +1,14 @@
 from django.shortcuts import render, get_object_or_404 
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from .models import UserProfile
 from .forms import UserProfileForm
+from django.http import FileResponse
 
 from checkout.models import Order
+from sheet_music.models import Sheetmusic
 
 
 @login_required
@@ -47,4 +51,19 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def download_sheetmusic(request, order_number, pdf_file):
+
+    downloaded_sheetmusic = '/TEST_PDF_Albinoni_Introduction_and_allegro_gf1LNl1.pdf'
+    print(downloaded_sheetmusic)
+    messages.success(request, ('Sheetmusic downloaded!'))
+
+   
+    context = {
+        'downloaded_sheetmusic': downloaded_sheetmusic
+    }
+    response = FileResponse(open('downloaded_sheetmusic', 'rb'))
+    
+    return response
 

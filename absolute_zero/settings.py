@@ -40,6 +40,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'sendemail',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -55,7 +56,6 @@ INSTALLED_APPS = [
     'basket',
     'checkout',
     'profiles',
-    'sendemail',
 
     # Other
     'crispy_forms',

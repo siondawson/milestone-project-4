@@ -1,7 +1,10 @@
+import mimetypes
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
+
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -30,6 +33,8 @@ def cache_checkout_data(request):
         messages.error(request, "Sorry, your payment can't be processed right now. Please try again later.")
         return HttpResponse(content=e, status=400)
 
+
+@login_required
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
