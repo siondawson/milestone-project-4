@@ -54,7 +54,7 @@
                 </p>
             </div>
             <div class="col-12">
-                <a class="btn btn-warning" href="{{ item.sheetmusic.pdf_file }}" target="_blank" >{{ item.sheetmusic.pdf_file }}</a>
+                <a class="btn btn-warning" href="{{MEDIA_URL}}{{ item.sheetmusic.pdf_file }}" target="_blank" >{{ item.sheetmusic.pdf_file }}</a>
             </div>
         </div>
         {% endfor %}
