@@ -55,13 +55,14 @@ def order_history(request, order_number):
     return render(request, template, context)
 
 
-def download_sheetmusic(request, order_number, name, pdf_file):
+def download_sheetmusic(request, order_number, pdf_file):
 
-    music = Sheetmusic.objects.get(name='Test EDITED')
+    music = Sheetmusic.objects.get(pdf_file='pdf/TEST_PDF_Albinoni_Introduction_and_allegro_gf1LNl1.pdf')
     print(music)
     print(music.pdf_file)
     print(music.pdf_file.path)
     downloaded_sheetmusic = music.pdf_file.path
+
 
     response = FileResponse(open(downloaded_sheetmusic, 'rb'))
     return response
