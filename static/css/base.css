@@ -20,6 +20,81 @@ body {
     height: 33vh;
 }
 
+/* fonts */
+
+.logo-font {
+    font-family: 'Charmonman', cursive;
+}
+
+.subtitle-font {
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+p, a {
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+/* Nav bar */
+
+.shopping-basket {
+    
+}
+
+#search {
+    width: 40%;
+}
+/* Page Header */
+
+.header-container {
+    /* background-color: #adb4f7; */
+}
+
+/* Home Page */
+
+.home-bg-img{
+    background: url('/static/media/website-images/logo-absolute-zero.jpeg') no-repeat center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        /* background-attachment: scroll; */
+    
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex: 1 0 auto;
+    height: 33vh;
+
+}
+
+/* Live music cardiff */
+.callout-container {
+    align-items: center;
+    background: url('/static/images/wmc.jpg') no-repeat bottom center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+.opaque-overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 100%;
+    left: 0%;
+    top: 0%;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.jumbotron-bg {
+    background-color: #000000ad;
+}
 
 
 /* material design basket icon */
