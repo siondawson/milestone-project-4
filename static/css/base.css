@@ -111,6 +111,20 @@ p, a {
   'opsz' 24
 }
 
+/* about page */
+
+.member-img {
+    position: relative;
+    margin: 0 auto;
+    max-width: 50%;
+  }
+
+.about-img {
+    position: relative;
+    margin: 0 auto;
+    max-width: 50%;
+}
+
 /* sets cursor to pointer  */
 
 .btt-link,

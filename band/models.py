@@ -15,3 +15,9 @@ class Enquiry(models.Model):
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     email = models.EmailField(max_length=254, null=False, blank=False)
     message = models.TextField(null=False, blank=False)
+
+
+class Member(models.Model):
+    name = models.CharField(max_length=50, null=False, blank=False)
+    image = models.ImageField(null=True, blank=True)
+    biog = models.TextField(null=False, blank=False)
