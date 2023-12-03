@@ -16,54 +16,49 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h2>Thankyou!</h2>
+            <div class="col-12 pt-5">
+                <h2>Thankyou {{ order.full_name }}!</h2>
                 <hr>
-                <p>Your order information is below. A confirmation email will be sent to {{ order.email }}</p>
+                <p>Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <p>Order number</p>
-            </div>
-            <div class="col-12">
-                <p>{{ order.order_number }}</p>
+                <p>Order number: <small>{{ order.order_number }}</small></p>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <p>Order Date</p>
+                <p>Order Date: <strong>{{ order.date }}</strong></p>
             </div>
             <div class="col-12">
-                <p>{{ order.date }}</p>
+                <p class="my-0">Billing:</p>
+                <p class="my-0">{{ order.street_address1 }}</p>
+                <p class="my-0">{{ order.street_address2 }}</p>
+                <p class="my-0">{{ order.town_or_city }}</p>
+                <p class="my-0">{{ order.county }}</p>
+                <p class="my-0 pb-3">{{ order.postcode }}</p>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <p>Order Details</p>
+                <h4>Order Details</h4>
             </div>
         </div>
         {% for item in order.lineitems.all %}
         <div class="row">
             <div class="col-12">
-                <p>{{ item.sheetmusic.name }}</p>
+                <hr>
+                <p>Title: {{ item.sheetmusic.name }} (£{{ item.sheetmusic.price }})</p>
             </div>
             <div class="col-12">
-                <p>
-                    {{ item.quantity }} x £{{ item.sheetmusic.price }}
-                </p>
-            </div>
-            <div class="col-12">
-                <a class="btn btn-warning" href="{{MEDIA_URL}}{{ item.sheetmusic.pdf_file }}" target="_blank" >{{ item.sheetmusic.pdf_file }}</a>
+                <h6>Instant Sheetmusic Download: <a class="btn btn-warning" href="{{MEDIA_URL}}{{ item.sheetmusic.pdf_file }}" target="_blank" >{{item.sheetmusic.composer_firstname}} {{ item.sheetmusic.composer_lastname}} - {{ item.sheetmusic.name }}</a> </h6>
             </div>
         </div>
         {% endfor %}
         <div class="row">
             <div class="col-12">
-                <p>Billing:</p>
-            </div>
-            <div class="col-12">
-                <p>{{ order.grand_total }}</p>
+                <p>Order Total: <strong>£{{ order.grand_total }}</strong></p>
             </div>
         </div>
     </div>
