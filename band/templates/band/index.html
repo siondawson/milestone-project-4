@@ -2,22 +2,23 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container-fluid header-container">
-        <div class="row">
-            <div class="col-12">
-                
-            </div>
+<div class="container-fluid header-container">
+    <div class="row">
+        <div class="col-12">
+
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
-        <!-- Image and jumbotron -->
-        <div class="row">
-            <div class="col-12 g-0">
-                <div class="home-bg-img">
-                    <section class="callout text-center text-white p-5 rounded jumbotron d-flex flex-column justify-content-center">
+<div class="container-fluid">
+    <!-- Image and jumbotron -->
+    <div class="row">
+        <div class="col-12 g-0">
+            <div class="home-bg-img">
+                <section
+                    class="callout text-center text-white p-5 rounded jumbotron d-flex flex-column justify-content-center">
                     <h1 class="logo-font">
                         Absolute Zero
                     </h1>
@@ -25,95 +26,99 @@
                     <h2 class="subtitle-font">
                         Viola Quartet
                     </h2>
-                    </section>
-                </div>
+                </section>
             </div>
         </div>
-        
-        <!-- About -->
-        <div class="row">
-            <div class="col-12 mt-5">
-                <h2 class="display-4 text-center logo-font">About the Quartet</h2>
+    </div>
+
+    <!-- About -->
+    <div class="row">
+        <div class="col-12 mt-5">
+            <h2 class="display-4 text-center logo-font">About the Quartet</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h6 class="display-6 mt-5 ms-5 me-5 logo-font">
+                Absolute Zero Viola Quartet was formed in 1995.
+            </h6>
+        </div>
+        <div class="col-12 col-md-6 mt-5">
+            <div>
+                <p>
+                    In that time have we compiled a large library of viola
+                    ensemble repertoire.
+                    <br>
+                    <br>
+                    If you were thinking this is not what one would normally expect to see in a regular string quartet,
+                    then you’d be right.
+                    Viola quartets are very much rarer – funny, that.
+                    <br>
+                    <br>
+                    You’ve probably noticed that we have a rather silly name. Well, there is a reason for that –
+                    although, admittedly, not a
+                    particularly good reason. Yet, on the plus side, people do tend to remember it.
+                    <br>
+                </p>
+            </div>
+            <div>
+                <a type="button" class="btn btn-dark btn-lg d-flex mx-auto mb-3">About Us</a>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <h6 class="display-6 mt-5 ms-5 me-5 logo-font">
-                    Absolute Zero Viola Quartet was formed in 1995. 
-                </h6>
-            </div>
-            <div class="col-12 col-md-6 mt-5">
-                <div>
-                    <p>
-                        In that time have we compiled a large library of viola
-                        ensemble repertoire.
-                        <br>
-                        <br>
-                        If you were thinking this is not what one would normally expect to see in a regular string quartet, then you’d be right.
-                        Viola quartets are very much rarer – funny, that.
-                        <br>
-                        <br>
-                        You’ve probably noticed that we have a rather silly name. Well, there is a reason for that – although, admittedly, not a
-                        particularly good reason. Yet, on the plus side, people do tend to remember it.
-                        <br>  
-                    </p>
-                </div>
-                <div>
-                    <a type="button" class="btn btn-dark btn-lg d-flex mx-auto">About Us</a>
-                </div>
-            </div>
+    </div>
+    <!-- Media -->
+    <div class="row">
+        <div class="col-12 col-md-6 mt-5">
+            <h2 class="display-4 logo-font text-center">Media</h2>
         </div>
-        <!-- Media -->
-        <div class="row">
-            <div class="col-12 mt-5">
-                <h2 class="display-4 logo-font">Media</h2>
-            </div>
+        <div class="col-12 col-md-6">
+            <iframe class="d-flex mx-auto" src="https://www.youtube.com/embed/n5VGSz5Tg7g?si=NVf8uBA8BUdVPpoL"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
         </div>
+    </div>
+
+</div>
+<!-- Calendar -->
+<section class="h-custom" style="">
+    <div class="container py-2">
         <div class="row">
-            <div class="col-12 col-md-6">
-                <h6 class="display-6">
-                    Beethoven 7 for viola quartet!
-                </h6>
-            </div>
-            <div class="col-12 col-md-6">
-                <iframe class="d-flex mx-auto" src="https://www.youtube.com/embed/n5VGSz5Tg7g?si=NVf8uBA8BUdVPpoL"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-        <!-- Calendar -->
-        <div class="row">
-            <div class="col-12 mt-5">
+            <div class="col-12 mt-5 mb-3">
                 <h2 class="display-4">Upcoming Concerts</h2>
             </div>
         </div>
+
         {% for concert in concerts %}
-        <div class="row">
+
+        <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row"></th>
-                            <td>{{ concert.date }}</td>
-                            <td>{{ concert.venue }}</td>
-                            <td>{{ concert.city }}</td>
-                            <td><a href="{{ concert.tickets }}" target="_blank">Tickets</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="d-flex flex-row">
+                                    <div class="ms-3">
+                                        <h5>{{ concert.date }}</h5>
+                                    </div>
+                                    <div>
+                                        <h5>{{ concert.venue }} | {{ concert.city }}</h5>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row">
+                                    <a class="remove-item text-success float-right"
+                                        href="{{ concert.tickets }}"><small>Tickets</small></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        {% endfor %}
-
     </div>
-    
+</section>
+{% endfor %}
+
+</div>
+
 {% endblock %}
