@@ -34,6 +34,10 @@ p, a {
     font-family: 'Nanum Myeongjo', serif;
 }
 
+.btn {
+    font-family: 'Nanum Myeongjo', serif;
+}
+
 /* Nav bar */
 
 .shopping-basket {
@@ -133,6 +137,13 @@ p, a {
 .toast-img {
     max-width: 100px;
     max-height: 200px;
+}
+
+/* checkout cards */
+
+.card {
+    border: none;
+    filter: drop-shadow(0 0 0.75rem #767171);
 }
 
 

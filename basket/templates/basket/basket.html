@@ -16,75 +16,85 @@
             <div class="col-12">
                 <h2 class="text-center">Your Basket</h2>
             </div>
-            <div class="col-12">
                 {% if basket_items %}
-                <div class="table-responsive rounded">
-                    <table class="table table-sm table-borderless">
-                        <thead class="text-black">
-                            <tr>
-                                <th scope="col">Product Info</th>
-                                <th scope="col"></th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Qty</th>
-                                <th scope="col">Subtotal</th>
-                                <th scope="col">
-                                    
-                                </th>
-                            </tr>
-                        </thead>
+                <!-- <div class="table-responsive rounded">
+                    <table class="table table-sm table-borderless"> -->
+                        
 
                         {% for item in basket_items %}
-                            <tr>
-                                <td class="p-3 w-25">
-                                    <img class="img-fluid rounded" src="{{ item.sheetmusic.image.url }}">
-                                </td>
-                                <td class="py-3">
-                                    <p class="my-0"><strong>{{ item.sheetmusic.name }}</strong></p>
-                                    <p class="my-0 small text-muted">SKU: {{ item.sheetmusic.sku|upper }}</p>
-                                </td>
-                                <td class="py-3">
-                                    <p class="my-0">${{ item.sheetmusic.price }}</p>
-                                </td>
-                                <td class="py-3 w-25">
-                                    <p class="my-0">{{ item.quantity }}</p>
-                                </td>
-                                <td class="py-3">
-                                    <p class="my-0">${{ item.sheetmusic.price | calc_subtotal:item.quantity }}</p>
-                                </td>
-                                <td class="py-3">
-                                    <a class="remove-item text-danger float-right" id="remove_{{ item.sheetmusic_id }}"><small>Remove</small></a>
-                                    <!-- <div>remove_{{ item.sheetmusic_id }}</div> -->
-                                </td>
-                            <form class="form update-form" method="POST" action="{% url 'remove_from_basket' item.sheetmusic_id %}">
-                                {% csrf_token %}
-                            </form>
+                            <!-- Basket Items -->
+                            <!-- Basket layout inspired by https://mdbootstrap.com/docs/standard/extended/shopping-carts/ -->
+                            <section class="h-100 h-custom" style="background-color: #eee;">
+                                <div class="container py-2 h-100">
+                                    <div class="row d-flex justify-content-center align-items-center h-100">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="card mb-3">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between">
+                                                            <div class="d-flex flex-row align-items-center">
+                                                                <div>
+                                                                    <img src="{{ item.sheetmusic.image.url }}" class="img-fluid rounded-3"
+                                                                        alt="Shopping item" style="width: 65px;">
+                                                                </div>
+                                                                <div class="ms-3">
+                                                                    <h5>{{ item.sheetmusic.name }}</h5>
+                                                                    <p class="small mb-0">{{ item.sheetmusic.category }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex flex-row align-items-center">
+                                                                <div style="width: 50px;">
+                                                                    <h5 class="fw-normal mb-0">{{ item.quantity }}</h5>
+                                                                </div>
+                                                                <div style="width: 80px;">
+                                                                    <h5 class="mb-0">£{{ item.sheetmusic.price }}</h5>
+                                                                </div>
+                                                                <a class="remove-item text-danger float-right"
+                                                                    id="remove_{{ item.sheetmusic_id }}"><small>Remove</small></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Remove from basket     -->
+                                <form class="form update-form" method="POST" action="{% url 'remove_from_basket' item.sheetmusic_id %}">
+                                    {% csrf_token %}
+                                </form>
+                            </section>
                             
-                        </tr>
+                           
+                            
                         {% endfor %}
-                        <tr>
-                            <td colspan="5" class="pt-5 text-right">
-                                <h6><strong>Basket Total: ${{ total|floatformat:2 }}</strong></h6>
-                                <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="text-right">
-                                <a href="{% url 'sheetmusic' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="text-uppercase">Keep Shopping</span>
-                                </a>
-                                <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
-                                    <span class="text-uppercase">Secure Checkout</span>
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- <h6><strong>Basket Total: ${{ total|floatformat:2 }}</strong></h6> -->
+                                <h4 class="mt-4 mb-4"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="{% url 'checkout' %}" class="btn btn-primary mb-3">
+                                    <span class="">Secure Checkout</span>
                                     <span class="icon">
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="{% url 'sheetmusic' %}" class="btn btn-dark mb-3">
+                                    <span class="icon">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="">Keep Shopping</span>
+                                </a>
+                            </div>
+                        </div>
+                                            
             {% else %}
                 <p class="lead mb-5">Your basket is empty.</p>
                 <a href="{% url 'sheetmusic' %}" class="btn btn-outline-black rounded-0 btn-lg">
@@ -97,6 +107,11 @@
             </div>
         </div>
     </div>
+
+    
+                      
+                   
+
 {% endblock %}
 
 {% block postloadjs %}
@@ -120,3 +135,9 @@
     })
 </script>
 {% endblock %}
+
+
+
+
+
+
