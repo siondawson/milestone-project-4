@@ -113,6 +113,12 @@
                                     <a class="remove-item text-success float-right"
                                         href="{{ concert.tickets }}"><small>Tickets</small></a>
                                 </div>
+                                {% if request.user.is_superuser %}
+                                <div class="d-flex flex-row">
+                                    <small><a class="text-primary" href="{% url 'edit_concert' concert.id %}">Edit</a></small> | 
+                                    <small><a class="text-danger" href="{% url 'delete_concert' concert.id %}">Delete</a></small>
+                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

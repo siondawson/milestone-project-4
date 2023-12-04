@@ -66,3 +66,11 @@ def edit_concert(request, concert_id):
     }
 
     return render(request, template, context)
+
+
+def delete_concert(request, concert_id):
+    """Delete a concert from the listings"""
+    concert = get_object_or_404(Concert, pk=concert_id)
+    concert.delete()
+    messages.success(request, 'Concert deleted!')
+    return redirect(reverse('band'))
