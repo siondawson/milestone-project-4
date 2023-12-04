@@ -42,3 +42,27 @@ def add_concert(request):
     }
 
     return render(request, template, context)
+
+
+def edit_concert(request, concert_id):
+    """Edit a concert in the concert listings"""
+    concert = get_object_or_404(Concert, pk=concert_id)
+    if request.method == 'POST':
+        form = ConcertForm(request.POST, instance=concert)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Concert edited!')
+            return redirect(reverse('band'))
+        else:
+            messages.error(request, 'Concert not updated. Please check form is valid.')
+    else:
+        form = ConcertForm(instance=concert)
+        messages.info(request, 'You are editing a concert listing.')
+
+    template = 'band/edit_concert.html'
+    context = {
+        'form': form,
+        'concert': concert,
+    }
+
+    return render(request, template, context)
