@@ -5,5 +5,13 @@ from .models import Concert
 class ConcertForm(forms.ModelForm):
     class Meta:
         model = Concert
-        fields = '__all__'
+        fields = [
+            'date',
+            'venue',
+            'city',
+            'tickets'
+        ]
+        def __init__(self, *args, **kwargs):
+            super(ConcertForm, self).__init__(*args, **kwargs)
+            self.fields['date'].widget.attrs['class'] = 'datepicker'
 
