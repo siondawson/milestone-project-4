@@ -8,6 +8,11 @@ body {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+
+}
+
+footer {
+
 }
 
 .home-img-carousel {
@@ -71,6 +76,10 @@ p, a {
 
 }
 
+.home {
+    text-align: justify;
+}
+
 /* Live music cardiff */
 .callout-container {
     align-items: center;
@@ -118,6 +127,23 @@ p, a {
     position: relative;
     margin: 0 auto;
     max-width: 50%;
+}
+
+.about {
+    text-align: justify;
+}
+.member-image {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* https://stackoverflow.com/questions/7737557/how-can-i-make-the-youtube-player-scale-to-the-width-of-the-page-but-also-keep-tf */
+iframe {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    width: 100%;
 }
 
 /* about from https://bbbootstrap.com/snippets/bootstrap-5-profile-card-animation-74461039 */

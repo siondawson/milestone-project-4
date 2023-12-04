@@ -30,20 +30,35 @@
             </div>
         </div>
     </div>
+</div>
+
+    
 
     <!-- About -->
+<div class="container">
     <div class="row">
         <div class="col-12 mt-5">
             <h2 class="display-4 text-center logo-font">About the Quartet</h2>
         </div>
     </div>
     <div class="row">
+        <div class="col-12 my-5">
+            <iframe class="home-video d-flex mx-auto" src="https://www.youtube.com/embed/n5VGSz5Tg7g?si=NVf8uBA8BUdVPpoL"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="row mb-5">
         <div class="col-12 col-md-6">
             <h6 class="display-6 mt-5 ms-5 me-5 logo-font">
                 Absolute Zero Viola Quartet was formed in 1995.
             </h6>
+            <div class="col-12 text-start ms-5 mt-5">
+                <a type="button" href="{% url 'about' %}" class="btn btn-dark btn-lg my-3">Learn More About Us</a>
+            </div>
         </div>
-        <div class="col-12 col-md-6 mt-5">
+        <div class="home col-12 col-md-6 mt-5">
             <div>
                 <p>
                     In that time have we compiled a large library of viola
@@ -61,73 +76,59 @@
                     <br>
                 </p>
             </div>
-            <div>
-                <a type="button" href="{% url 'about' %}" class="btn btn-dark btn-lg d-flex mx-auto mb-3">About Us</a>
-            </div>
+            
         </div>
     </div>
-    <!-- Media -->
-    <div class="row">
-        <div class="col-12 col-md-6 mt-5">
-            <h2 class="display-4 logo-font text-center">Media</h2>
-        </div>
-        <div class="col-12 col-md-6">
-            <iframe class="d-flex mx-auto" src="https://www.youtube.com/embed/n5VGSz5Tg7g?si=NVf8uBA8BUdVPpoL"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        </div>
-    </div>
+    
 
 </div>
 <!-- Calendar -->
-<section class="h-custom" style="">
+<section class="h-custom">
     <div class="container py-2">
         <div class="row">
-            <div class="col-12 mt-5 mb-3">
-                {% if request.user.is_superuser %}
-                <h2 class="display-4">Upcoming Concerts  <a type="button" href="{% url 'add_concert' %}" class="btn btn-dark btn-lg d-flex mx-auto mb-3">Add Concert</a></h2>
-                {% else %}
-                <h2 class="display-4">Upcoming Concerts</h2>
-                {% endif %}
+            <div class="col-12 mb-5">
+                <h2 class="logo-font text-center">Upcoming Concerts </h2>
             </div>
         </div>
 
         {% for concert in concerts %}
 
-        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="row d-flex h-100">
             <div class="col">
-                <div class="row">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="d-flex flex-row">
-                                    <div class="ms-3">
-                                        <h5>{{ concert.date }}</h5>
-                                    </div>
-                                    <div>
-                                        <h5>{{ concert.venue }} | {{ concert.city }}</h5>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <a class="remove-item text-success float-right"
-                                        href="{{ concert.tickets }}"><small>Tickets</small></a>
-                                </div>
-                                {% if request.user.is_superuser %}
-                                <div class="d-flex flex-row">
-                                    <small><a class="text-primary" href="{% url 'edit_concert' concert.id %}">Edit</a></small> | 
-                                    <small><a class="text-danger" href="{% url 'delete_concert' concert.id %}">Delete</a></small>
-                                </div>
-                                {% endif %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+        
+                            <div>
+                                <h5>{{ concert.date }}</h5>
                             </div>
+                            <div>
+                                <h5>{{ concert.venue }} | {{ concert.city }}</h5>
+                            </div>
+        
+                            <div class="">
+                                <small><a class="remove-item text-success" href="{{ concert.tickets }}">Tickets</a></small>
+                                {% if request.user.is_superuser %}
+                                | <small><a class="text-primary" href="{% url 'edit_concert' concert.id %}">Edit</a></small> |
+                                <small><a class="text-danger" href="{% url 'delete_concert' concert.id %}">Delete</a></small>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
 {% endfor %}
+<div class="row">
+    <div class="col-12 text-center">
+        {% if request.user.is_superuser %}
+            <a type="button" href="{% url 'add_concert' %}" class="btn btn-dark float-right my-5 ">Add Concert</a>
+        {% else %}
+        {% endif %}
+    </div>
+</div>
+</div>
+</section>
 
 </div>
 

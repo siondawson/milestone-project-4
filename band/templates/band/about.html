@@ -16,11 +16,11 @@
 <div class="container">
     <div class="row">
         <div class="col-12 text-center">
-            <h2>About Us</h2>
+            <h2 class="logo-font display-4 my-5">About Us</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 col-md-6">
+    <div class="row mb-5">
+        <div class="about col-12 col-md-6">
         <p>
             But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, 
             and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, 
@@ -34,31 +34,24 @@
             <img class="d-block w-100 about-img" src="{% static 'media/website-images/absolute_zero_garden.JPG' %}" alt="A photo of abosolute zero in a garden with a dog.">
         </div>
     </div>
-            <div class="row">
-                <div class="col-12 col-md-6">
-    {% for member in members %}
-        
-                <div class="card p-4">
-                    <div class="member-image d-flex flex-column justify-content-center align-items-center"> <button
-                            class="btn btn-secondary"> <img src="{{ member.image.url }}" height="100"
-                                width="100" /></button> <span class="name mt-3">{{ member.name }}</span>
-                        <div class="text mt-3"> 
-                            <span>{{ member.biog }} </span>
-                        </div>
+    <div class="row">
+        {% for member in members %}
+        <div class="col-12 col-md-6 p-3">
+            <div class="card p-4">
+                <div class=" d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                        <img class="member-image" src="{{ member.image.url }}"/>
+                    </div> 
+                    <p class="name mt-3">{{ member.name }}</p>
+                    <div class="text mt-3"> 
+                        <p>{{ member.biog }} </p>
                     </div>
                 </div>
-            
-    
-    {% endfor %}
-                </div>
             </div>
-
+        </div>
+        {% endfor %}
+    </div>
 </div>
-
-
-
-
-
 {% endblock %}\
 
 
