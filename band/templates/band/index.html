@@ -85,7 +85,11 @@
     <div class="container py-2">
         <div class="row">
             <div class="col-12 mt-5 mb-3">
+                {% if request.user.is_superuser %}
+                <h2 class="display-4">Upcoming Concerts  <a type="button" href="{% url 'add_concert' %}" class="btn btn-dark btn-lg d-flex mx-auto mb-3">Add Concert</a></h2>
+                {% else %}
                 <h2 class="display-4">Upcoming Concerts</h2>
+                {% endif %}
             </div>
         </div>
 

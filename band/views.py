@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
 from .models import Concert, Member
 from .forms import ConcertForm
 
@@ -24,8 +25,17 @@ def about(request):
 
 def add_concert(request):
     """ Add a concert to the listings on home page """
-
-    form = ConcertForm()
+    if request.method == 'POST':
+        form = ConcertForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Concert added!')
+            return redirect(reverse('band'))
+        else:
+            messages.error(request, 'Failed to add concert. Please check form is valid')
+    else:
+        form = ConcertForm()
+    
     template = 'band/add_concert.html'
     context = {
         'form': form,
