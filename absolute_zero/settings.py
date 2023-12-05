@@ -35,7 +35,8 @@ ALLOWED_HOSTS = [
     '8000-siondawson-milestone-pro-8d1ayvf1xa.us2.codeanyapp.com',
     '8000-siondawson-milestonepro-ire3zvp3mu6.ws-eu106.gitpod.io',
     '8000-siondawson-milestonepro-vh99hku1iek.ws-eu106.gitpod.io',
-    '127.0.0.1']
+    '127.0.0.1',
+    'absolute-zero-viola-quartet.herokuapp.com, 'localhost']
 
 
 # Application definition
