@@ -1,0 +1,1 @@
+web: gunicorn absolute_zero.wsgi:application
