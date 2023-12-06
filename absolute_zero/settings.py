@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'basket',
     'checkout',
     'profiles',
+    'cloudinary',
+    'cloudinary_storage',
 
     # Other
     'crispy_forms',
@@ -211,6 +213,11 @@ if 'USE_AWS' in os.environ:
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+# Cloudinary Settings
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUIDNARY_URL = os.environ.get('CLOUDINARY_URL')
+
 
 # Stripe
 
