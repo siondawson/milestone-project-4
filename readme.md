@@ -118,12 +118,7 @@ This functionality fulfils user stories x x x x x x
 
 ## Basket App
 
-
-
-
-
-
-### Basket app
+An app for users to add items to their basket. Users may add items to their basket by 
 
 
 
