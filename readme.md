@@ -69,3 +69,61 @@ This fulfils user stories x x x x xx
 The contact form styling is based on the 'love running' project, a styling I have employed previously in my milestone project 1 submission. 
 
 ## sheetmusic app
+
+An app to display the sheetmusic store. Sheetmusic products are displayed with bootstrap cards. Images are the first page of the score which is large enough for users to get a solid idea of the prouduct. 
+
+### All Sheetmusic -  with filtering and search functionality.
+
+Viewing all sheetmusic. The first option in the dropdown box shows users all sheetmusic items available for sale. 
+
+This fulfils user story x x x xx 
+
+Filtering. Users may easily select from a drop-down menu filter options for duo, trio, quartet or large ensemble depending on the type of sheetmusic they are looking for. 
+
+This fulfils users stories x xx x
+
+Users may also search. The search query box allows users to search the composers name and title of a piece. Search results are rendered the same way as
+
+This fulfils user stories x x x x
+
+### Sheetmusic detail 
+
+To find out more about a particular product users may click the sheetmusic cards image to proceed to the sheetmusic detail. Here the user is presented with full information on the sheetmusic title they have selected.
+
+This fulfils user stories x x x x 
+
+The user may choose to add the sheetmusic to their basket, or return to view all sheetmusic. 
+
+
+### Sheetmusic app for superusers
+
+Superusers, those defined as store managers have access to additional functionality.
+
+Adding Sheetmusic. Store managers may add new sheetmusic items to the store via a link provided under the 'My Account' tab on the nav bar.
+
+This fulfils user story x x x x x
+
+Here the superuser is provided with a form where they may add all the required information to set up a new sheetmusic item. The superuser must ensure that the correct PDF file is added via this form as this is what they musician/ shopper will receive on purchase. 
+
+This fulfils user story x x x x x
+
+Superusers may also edit and delete sheetmusic from the store. This functionality can only be accessed via the 'sheetmusic_detail' view. Superusers are provided with appropriately colored edit and delete links. 
+
+The edit link takes superusers to a similar form to 'add_sheetmusic'. The form is pre populated with data from the sheetmusic item the superuser has selected.
+
+The edit link opens a modal where the superuser must confirm deletion, or choose to cancel deletion. 
+
+This functionality fulfils user stories x x x x x x
+
+
+## Basket App
+
+
+
+
+
+
+### Basket app
+
+
+
