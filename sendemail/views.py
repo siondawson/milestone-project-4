@@ -21,7 +21,7 @@ def contact(request):
             email_body = '{phone_number} - {from_email} - {message}'
             try:
                 print(phone_number)
-                send_mail(subject, email_body, message, ["admin@example.com"])
+                send_mail(subject, email_body, message, ["siondawson91@gmail.com"])
             except BadHeaderError:
                 return HttpResponse("Invalid header found.")
             messages.success(request, "Email sent! We will respond as soon as possible")
