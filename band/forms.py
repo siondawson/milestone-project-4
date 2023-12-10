@@ -13,5 +13,4 @@ class ConcertForm(forms.ModelForm):
         ]
         def __init__(self, *args, **kwargs):
             super(ConcertForm, self).__init__(*args, **kwargs)
-            self.fields['Tickets'].label = "Ticket or external info link"
-
+            self.fields['date'].widget = widgets.AdminSplitDateTime()
