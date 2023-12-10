@@ -28,6 +28,7 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
         send_mail(
             subject,
             body,
@@ -59,7 +60,7 @@ class StripeWH_Handler:
 
         billing_details = stripe_charge.billing_details # updated
         shipping_details = intent.shipping
-        grand_total = round(stripe_charge.amount / 100, 2) # updated
+        grand_total = round(intent.charges.data[0] / 100, 2) # updated
 
         # clean data in the shipping details
         for field, value in shipping_details.address.items():
@@ -71,8 +72,9 @@ class StripeWH_Handler:
         profile = None
         username = intent.metadata.username
         if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
             if save_info:
-                profile = UserProfile.objects.get(user__username=username)
+                
                 profile.default_phone_number = shipping_details.phone,
                 profile.default_country = shipping_details.address.country,
                 profile.default_postcode = shipping_details.address.postal_code,
@@ -99,6 +101,7 @@ class StripeWH_Handler:
                     county__iexact=shipping_details.address.state,
                     grand_total=grand_total,
                     original_basket=basket,
+                    stripe_pid=pid
                 )
                 order_exists = True
                 break
@@ -110,7 +113,7 @@ class StripeWH_Handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhook received: {event["type"]}',
+                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
         else:
             order = None
@@ -119,15 +122,15 @@ class StripeWH_Handler:
                     full_name=shipping_details.name,
                     user_profile=profile,
                     email=billing_details.email,
-                    phone_numbet=shipping_details.phone,
+                    phone_number=shipping_details.phone,
                     country=shipping_details.address.country,
                     postcode=shipping_details.address.postal_code,
                     town_or_city=shipping_details.address.city,
                     street_address1=shipping_details.address.line1,
                     street_address2=shipping_details.address.line2,
                     county=shipping_details.address.state,
-                    grand_total=grand_total,
                     original_basket=basket,
+                    stripe_pid=pid,
                 )
                 for sheetmusic_id, sheetmusic_data in json.loads(basket).items():
                     sheetmusic = Sheetmusic.objects.get(id=sheetmusic_id)
@@ -145,8 +148,9 @@ class StripeWH_Handler:
                 status=500)
         self._send_confirmation_email(order)
         return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
-                status=200)
+            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            status=200)
+
     def handle_payment_intent_payment_failed(self, event):
         """
         Handle the payment_intent.payment_failed webhook from Stripe
