@@ -142,4 +142,12 @@ When a user clicks the 'proceed to checkout' button in the basket they are taken
 An app to handle payments of sheetmusic items the user has selected.
 
 
+## Allauth
+
+To handle user accounts, logging in and out. Django allauth was used. 
+
+
+As there are many templates associated with allauth. Some styling was added on an ongoing basis. Some testing screenshots show unstyled buttons. These were corrected as I went, rather than pushing to github and deploying on heroku again.
+
+
 
