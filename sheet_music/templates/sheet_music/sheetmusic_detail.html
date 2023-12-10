@@ -49,20 +49,39 @@
               <dd class="col-9">Viola {{ sheetmusic.category.name }}</dd>
 
               <div class="col-12">
+                <!-- edit and delete links -->
                 {% if request.user.is_superuser %}
-                <small>
-                  <a class="text-info" href="{% url 'edit_sheetmusic' sheetmusic.id %}">Edit</a> |
-                  <a class="text-danger" href="{% url 'delete_sheetmusic' sheetmusic.id %}">Delete</a>
-                </small>
+                  <small>
+                    <a class="text-info" href="{% url 'edit_sheetmusic' sheetmusic.id %}">Edit</a> |
+                    <a type="button" class="text-danger" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                      Delete
+                    </a>
+                  </small>
+                  <!-- Confirm Delete Modal  -->
+                  <!-- (this delete modal code has been reused from my milestone-project-3 as it serves the same purpose) -->
+                  <div class="modal fade" id="delete-modal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Are you sure?</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Clicking 'delete' will permanently delete this sheetmusic from the store!!</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go Back</button>
+                          <a href="{% url 'delete_sheetmusic' sheetmusic.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 {% endif %}
               </div>
   
               
             </div>
               
-            <!-- <a href="#" class=""> 
-             
-            </a> -->
             <form  class="form" action="{% url 'add_to_basket' sheetmusic.id %}" method="POST">
                 {% csrf_token %}
                 <div class="form-row">
