@@ -20,7 +20,7 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, order):
         """Send user a confirmation email """
-
+        print("SENDING CONFIRMATION")
         cust_email = order.email
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
@@ -40,6 +40,7 @@ class StripeWH_Handler:
         """
         Handle a generic/unknown/unexpected webhook event
         """
+        print('handing event')
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
@@ -48,6 +49,7 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
+        print('handing payment intent succeeded started')
         intent = event.data.object
         pid = intent.id
         basket = intent.metadata.basket
@@ -60,7 +62,8 @@ class StripeWH_Handler:
 
         billing_details = stripe_charge.billing_details # updated
         shipping_details = intent.shipping
-        grand_total = round(intent.charges.data[0] / 100, 2) # updated
+        grand_total = round(stripe_charge.amount / 100, 2) # updated
+        
 
         # clean data in the shipping details
         for field, value in shipping_details.address.items():
@@ -74,7 +77,6 @@ class StripeWH_Handler:
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
             if save_info:
-                
                 profile.default_phone_number = shipping_details.phone,
                 profile.default_country = shipping_details.address.country,
                 profile.default_postcode = shipping_details.address.postal_code,
@@ -83,7 +85,6 @@ class StripeWH_Handler:
                 profile.default_street_address2 = shipping_details.address.line2,
                 profile.default_county = shipping_details.address.state,
                 profile.save()
-
 
         order_exists = False
         attempt = 1
@@ -104,9 +105,7 @@ class StripeWH_Handler:
                     stripe_pid=pid
                 )
                 order_exists = True
-                break
-
-                
+                break 
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
@@ -140,13 +139,15 @@ class StripeWH_Handler:
                             sheetmusic=sheetmusic,
                             quantity=sheetmusic_data,
                         )
-                    order_line_item.save()
+                        order_line_item.save()
             except Exception as e:
                 if order:
                     order.delete()
                 return HttpResponse(content=f'Webhook received: {event["type"]} | ERROR: {e}', 
                 status=500)
+                print('STATUS 500')
         self._send_confirmation_email(order)
+        print('order email sent')
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)

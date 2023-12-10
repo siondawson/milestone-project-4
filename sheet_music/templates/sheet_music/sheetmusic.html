@@ -49,7 +49,7 @@
                         <div class="card-footer bg-white pt-0 border-0 text-left">
                             <div class="row">
                                 <div class="col">
-                                    <p class="lead mb-0 text-left font-weight-bold">${{ filtered_sheetmusic.price }}</p>
+                                    <p class="lead mb-0 text-left font-weight-bold">£{{ filtered_sheetmusic.price }}</p>
                                     {% if filtered_sheetmusic.category %}
                                     <p class="small mt-1 mb-0">
                                         <a class="text-muted text-uppercase" href="{% url 'sheetmusic' %}?category={{ filtered_sheetmusic.category.name }}">
@@ -100,7 +100,7 @@
                         <div class="card-footer bg-white pt-0 border-0 text-left">
                             <div class="row">
                                 <div class="col">
-                                    <p class="lead mb-0 text-left font-weight-bold">${{ allsheetmusic.price }}</p>
+                                    <p class="lead mb-0 text-left font-weight-bold">£{{ allsheetmusic.price }}</p>
                                     {% if allsheetmusic.category %}
                                     <p class="small mt-1 mb-0">
                                         <a class="text-muted text-uppercase" href="{% url 'sheetmusic' %}?category={{ allsheetmusic.category.name }}">

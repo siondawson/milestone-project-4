@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 pt-5">
-                <h2>Thankyou {{ order.full_name }}!</h2>
+                <h2 class="logo-font">Thank you {{ order.full_name }}!</h2>
                 <hr>
                 <p>Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
             </div>
@@ -42,7 +42,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h4>Order Details</h4>
+                <h4 class="logo-font mt-5">Order Details</h4>
             </div>
         </div>
         {% for item in order.lineitems.all %}
@@ -52,7 +52,7 @@
                 <p>Title: {{ item.sheetmusic.name }} (£{{ item.sheetmusic.price }})</p>
             </div>
             <div class="col-12">
-                <h6>Instant Sheetmusic Download: <a class="btn btn-warning" href="{{ item.sheetmusic.pdf_file.url }}" target="_blank" >{{item.sheetmusic.composer_firstname}} {{ item.sheetmusic.composer_lastname}} - {{ item.sheetmusic.name }}</a> </h6>
+                <h6 class="subtitle-font">Instant Sheetmusic Download: <a class="btn btn-warning" href="{{ item.sheetmusic.pdf_file.url }}" target="_blank" >{{item.sheetmusic.composer_firstname}} {{ item.sheetmusic.composer_lastname}} - {{ item.sheetmusic.name }}</a> </h6>
             </div>
         </div>
         {% endfor %}

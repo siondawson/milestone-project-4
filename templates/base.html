@@ -1,7 +1,7 @@
 {% load static %}
 
 <!doctype html>
-<html lang="en" class="h-100">
+<html lang="en">
 
 <head>
     {% block meta %}
@@ -54,7 +54,7 @@
 
 </head>
 
-<body class="d-flex flec-column h-100">
+<body>
     <!-- nav -->
     <header class="container-fluid">
         <div class="row">
@@ -106,7 +106,7 @@
                                     {% endif %}
                                 </ul>
                             </li>
-                            <li class="d-flex mx-3">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                             </li>
                         </ul>
@@ -171,8 +171,10 @@
     {% block page_header %}
     {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 
     <!-- footer -->
     <!-- from https://mdbootstrap.com/docs/standard/navigation/footer/ -->

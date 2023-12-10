@@ -6,13 +6,14 @@ html {
 
 body {
     overflow-x: hidden;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 
 }
 
 footer {
-
+    margin-top: auto;
 }
 
 .home-img-carousel {
