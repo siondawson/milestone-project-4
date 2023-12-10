@@ -118,7 +118,28 @@ This functionality fulfils user stories x x x x x x
 
 ## Basket App
 
-An app for users to add items to their basket. Users may add items to their basket by 
+An app for users to add items to their basket. Users may add items to their basket by viewing the sheetmusic detial and clicking the add to basket button. 
+
+As users are buying a digital product, there is a hidden quantity variable on the sheetmusic_detail page always set to 1. Users may click 'add to basket' again to add a 2nd, 3rd copy and so on if they wish. Digital sheetmusic products are easy to copy and share once users have bought and downloaded. As all sheetmusic products in the store include a score and set of parts as one single PDF file, it is assumed that a quantity of 1 serves a whole band of however many instruments the sheetmusic purchased is designed for. Users may wish to purchase more copies if they intent to supply them to more than one band or ensemble. 
+
+Sheetmusic items in the users basket are displayed via bootstrap cards. They are presented with a clear summary of the sheetmusic. Along with a quantity that they have added to their basket.
+
+This fulfils user stories x x x
+
+Users may remove items from their basket by clicking the red 'remove' link.
+
+This fulfils user stories x x x
+
+
+After a user has selected all the sheetmusic items from the store they with to purchase, a basket graphic is provided at all times in the top right of the nav ba (or within the menu on smaller screen sizes) with a running total of their basket. Clicking this link brings them to 'basket' page, where they may see all items in their basket and proceed to paymenet.
+
+This fulfils user stories x x x x x
+
+When a user clicks the 'proceed to checkout' button in the basket they are taken to the checkout app. 
+
+## Checkout app
+
+An app to handle payments of sheetmusic items the user has selected.
 
 
 

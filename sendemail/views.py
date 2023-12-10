@@ -15,13 +15,13 @@ def contact(request):
         if form.is_valid():
             subject = form.cleaned_data["subject"]
             from_email = form.cleaned_data["from_email"]
-            phone_number = form.cleaned_data["phone_number"]
-            message = form.cleaned_data['message']
-
-            email_body = '{phone_number} - {from_email} - {message}'
+            phone_number = str(form.cleaned_data["phone_number"])
+            message = form.cleaned_data["message"] + ' ' + "|| Senders email: " + f'{from_email}' + ' ' + "|| Senders phone: "+ f'{phone_number}'
+           
+            
             try:
                 print(phone_number)
-                send_mail(subject, email_body, message, ["siondawson91@gmail.com"])
+                send_mail(subject, message, from_email, ["siondawson91@gmail.com"])
             except BadHeaderError:
                 return HttpResponse("Invalid header found.")
             messages.success(request, "Email sent! We will respond as soon as possible")
