@@ -52,7 +52,7 @@
                 <p>Title: {{ item.sheetmusic.name }} (£{{ item.sheetmusic.price }})</p>
             </div>
             <div class="col-12">
-                <h6>Instant Sheetmusic Download: <a class="btn btn-warning" href="{{MEDIA_URL}}{{ item.sheetmusic.pdf_file }}" target="_blank" >{{item.sheetmusic.composer_firstname}} {{ item.sheetmusic.composer_lastname}} - {{ item.sheetmusic.name }}</a> </h6>
+                <h6>Instant Sheetmusic Download: <a class="btn btn-warning" href="{{ item.sheetmusic.pdf_file.url }}" target="_blank" >{{item.sheetmusic.composer_firstname}} {{ item.sheetmusic.composer_lastname}} - {{ item.sheetmusic.name }}</a> </h6>
             </div>
         </div>
         {% endfor %}
