@@ -107,7 +107,7 @@
                                 </div>
             
                                 <div class="">
-                                    <small><a class="remove-item text-success" href="{{ concert.tickets }}">Tickets</a></small>
+                                    <small><a class="remove-item text-success" target="_blank" href="{{ concert.tickets }}">Tickets</a></small>
                                     {% if request.user.is_superuser %}
                                     | <small><a class="text-primary" href="{% url 'edit_concert' concert.id %}">Edit</a></small> |
                                     <small><a type="button" class="text-danger" data-bs-toggle="modal" data-bs-target="#delete-modal-{{ concert.id }}">
