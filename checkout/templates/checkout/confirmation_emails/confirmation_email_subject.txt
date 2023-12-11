@@ -1,1 +1,8 @@
-Absolute Zero Violas Sheetmusic Order Confirmation {{ order.order_number }}
+Hi {{ order.full_name }},
+
+Thankyou for your order! If you have not allready done so, your sheet music is available to download right away. 
+
+Log into your account, go to your profile, click the order number and download your sheet music!
+
+Order Number: {{ order.order_number }}
+Date: {{ order.date }}
