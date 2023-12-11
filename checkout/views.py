@@ -82,6 +82,7 @@ def checkout(request):
 
         else:
             messages.error(request, 'There was an error with your form. Please double check your information')
+            print(order_form.errors.as_data())
     else:
 
         basket = request.session.get('basket', {})
