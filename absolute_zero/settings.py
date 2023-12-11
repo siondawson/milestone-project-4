@@ -230,3 +230,8 @@ else:
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+print(f'PUBLIC KEY IS: {STRIPE_PUBLIC_KEY}')
+print(f'SECRET KEY IS: {STRIPE_SECRET_KEY}')
+print(f'WH SECRET: {STRIPE_WH_SECRET}')

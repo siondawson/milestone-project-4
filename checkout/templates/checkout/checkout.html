@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center">Checkout</h2>
+                <h2 class="text-center logo-font">Checkout</h2>
             </div>
             <div class="col-12 col-lg-6">
             <!-- Order Summary -->
@@ -46,17 +46,17 @@
             </div>
             <!-- Checkout -->
             <div class="col-12 col-lg-6">
-               <h4>Fill out the form to complete the order</h4>
+               <h4 class="subtitle-font mt-3 mb-3">Fill out the form to complete the order</h4>
                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset>
-                        <legend class="">Infomation</legend>
+                        <legend class="subtitle-font">Information</legend>
                         {{ order_form.full_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
                         {{ order_form.phone_number | as_crispy_field }}
                     </fieldset>
                     <fieldset>
-                        <legend>Billing Address</legend>
+                        <legend class="subtitle-font">Billing Address</legend>
                         {{ order_form.street_address1 | as_crispy_field }}
                         {{ order_form.street_address2 | as_crispy_field }}
                         {{ order_form.town_or_city | as_crispy_field }}
@@ -76,7 +76,7 @@
 						</div>
                     </fieldset>
                     <fieldset>
-                        <legend>Payment</legend>
+                        <legend class="subtitle-font">Payment</legend>
                         <!-- Stripe card element goes here -->
                         <div id="card-element"></div>
 
