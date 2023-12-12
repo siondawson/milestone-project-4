@@ -16,7 +16,7 @@
         
         <!-- displays results from search query -->
         {% if search_term %}
-            <h2>Search Results for "{{ search_term }}"</h2>
+            <h2 class="logo-font">Search Results for "{{ search_term }}"</h2>
         
             {% for sheetmusic in searched_sheetmusic %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 m-3">
@@ -27,14 +27,13 @@
                         <div class="card-body">
                             <p class="card-title">{{ sheetmusic.composer_lastname }} - {{ sheetmusic.name }}</p>
                             <p class="card-text">£{{ sheetmusic.price }}</p>
-                            <a href="" class="btn btn-primary">SEARCHED</a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
-        {% endif %}
+        
         <!-- displays filters -->
-        {% if filtered_sheetmusic %}
+        {% elif filtered_sheetmusic %}
             {% for filtered_sheetmusic in filtered_sheetmusic %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="card h-100 border-0">

@@ -151,6 +151,14 @@ To handle user accounts, logging in and out. Django allauth was used.
 
 As there are many templates associated with allauth. Some styling was added on an ongoing basis. Some testing screenshots show unstyled buttons. These were corrected as I went, rather than pushing to github and deploying on heroku again.
 
+# Wireframes
+
+Wireframes can be found [here](https://github.com/siondawson/milestone-project-4/tree/main/wireframes).
+
+Most pages have wireframes created for mobile and desktop and can be viewed via the link above.
+
+Wireframes were not created for pages that are forms. Crispy forms was used to automatcially generate form fields. Each form was set to an appropiate width to suit the screen size and users expectation.
+
 
 # Validation
 
