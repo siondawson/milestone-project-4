@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center">Your Basket</h2>
+                <h2 class="text-center logo-font">Your Basket</h2>
             </div>
                 {% if basket_items %}
                 <!-- <div class="table-responsive rounded">
@@ -38,16 +38,16 @@
                                                                         alt="Shopping item" style="width: 65px;">
                                                                 </div>
                                                                 <div class="ms-3">
-                                                                    <h5>{{ item.sheetmusic.name }}</h5>
-                                                                    <p class="small mb-0">{{ item.sheetmusic.category }}</p>
+                                                                    <h5 class="subtitle-font">{{ item.sheetmusic.name }}</h5>
+                                                                    <p class="small mb-0 subtitle-font">{{ item.sheetmusic.category }}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="d-flex flex-row align-items-center">
                                                                 <div style="width: 50px;">
-                                                                    <h5 class="fw-normal mb-0">{{ item.quantity }}</h5>
+                                                                    <h5 class="fw-normal mb-0 subtitle-font">{{ item.quantity }}</h5>
                                                                 </div>
                                                                 <div style="width: 80px;">
-                                                                    <h5 class="mb-0">£{{ item.sheetmusic.price }}</h5>
+                                                                    <h5 class="mb-0 subtitle-font">£{{ item.sheetmusic.price }}</h5>
                                                                 </div>
                                                                 <a class="remove-item text-danger float-right"
                                                                     id="remove_{{ item.sheetmusic_id }}"><small>Remove</small></a>
@@ -71,7 +71,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <!-- <h6><strong>Basket Total: ${{ total|floatformat:2 }}</strong></h6> -->
-                                <h4 class="mt-4 mb-4"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+                                <h4 class="mt-4 mb-4 subtitle-font"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h4>
                             </div>
                         </div>
                         <div class="row">
@@ -87,7 +87,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <a href="{% url 'sheetmusic' %}" class="btn btn-dark mb-3">
-                                    <span class="">Keep Shopping</span>
+                                    <span class="">All Sheetmusic</span>
                                 </a>
                             </div>
                         </div>
