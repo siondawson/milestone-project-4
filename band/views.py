@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from datetime import date, timedelta
 from .models import Concert, Member
 from .forms import ConcertForm
 
 
 def index(request):
     """ a view to return the index page """
-    concerts = Concert.objects.all()
+    concerts = Concert.objects.all().order_by('date')
+    startdate = date.today()
+    enddate = startdate + timedelta(days=6)
+    pastconcert = Concert.objects.filter(date__range=[startdate, enddate])
+    print(pastconcert)
+    print(concerts)
     context = {
         'concerts': concerts
     }
