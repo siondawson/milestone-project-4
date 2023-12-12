@@ -1,5 +1,7 @@
 # Milestone Project 4 - Absolute Zero Viola Quartet
 
+![multi device mockup](testing/absolute-zero-multi-device-mockup.png)
+
 ## Purpose
 
 This website was created for Code Institue's Milestone Project 4 assignment. The purpose of the project is to demonstrate an understanding of full stack web development with the creating of a Django app, which will include fully automated e-commerce functioniality. A full list of technologies used can be found in the technologies section fo this readme.

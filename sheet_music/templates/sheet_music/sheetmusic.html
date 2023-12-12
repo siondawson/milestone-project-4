@@ -19,7 +19,7 @@
             <h2>Search Results for "{{ search_term }}"</h2>
         
             {% for sheetmusic in searched_sheetmusic %}
-                <!-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 m-3">
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 m-3">
                     <div class="card" style="width: 18rem;">
                         <a href="{% url 'sheetmusic_detail' sheetmusic.id %}">
                             <img src="{{ sheetmusic.image.url }}" class="card-img-top" alt="{{ sheetmusic.name }}">
@@ -27,10 +27,10 @@
                         <div class="card-body">
                             <p class="card-title">{{ sheetmusic.composer_lastname }} - {{ sheetmusic.name }}</p>
                             <p class="card-text">£{{ sheetmusic.price }}</p>
-                            <a href="" class="btn btn-primary">Go somewhere</a>
+                            <a href="" class="btn btn-primary">SEARCHED</a>
                         </div>
                     </div>
-                </div> -->
+                </div>
             {% endfor %}
         {% endif %}
         <!-- displays filters -->
@@ -44,7 +44,7 @@
                         </a>
                         
                         <div class="card-body pb-0">
-                            <p class="mb-0">{{ filtered_sheetmusic.name }}</p>
+                            <p class="mb-0">{{filtered_sheetmusic.composer_lastname}} - {{ filtered_sheetmusic.name }}</p>
                         </div>
                         <div class="card-footer bg-white pt-0 border-0 text-left">
                             <div class="row">
@@ -95,7 +95,7 @@
                         </a>
                         
                         <div class="card-body pb-0">
-                            <p class="mb-0">{{ allsheetmusic.name }}</p>
+                            <p class="mb-0">{{ allsheetmusic.composer_lastname}} - {{ allsheetmusic.name }}</p>
                         </div>
                         <div class="card-footer bg-white pt-0 border-0 text-left">
                             <div class="row">
