@@ -1,5 +1,6 @@
 import mimetypes
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, reverse, \
+                        get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -16,10 +17,10 @@ from basket.contexts import basket_contents
 import stripe
 import json
 
-# Create your views here.
 
 @require_POST
 def cache_checkout_data(request):
+    """ Caches checkout data """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -30,12 +31,14 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, "Sorry, your payment can't be processed right now. Please try again later.")
+        messages.error(request, "Sorry, your payment can't be \
+        processed right now. Please try again later.")
         return HttpResponse(content=e, status=400)
 
 
 @login_required
 def checkout(request):
+    """ a view to handle customer checkout """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -61,7 +64,6 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_basket = json.dumps(basket)
             order.save()
-            
 
             for sheetmusic_id, sheetmusic_data in basket.items():
                 try:
@@ -75,20 +77,25 @@ def checkout(request):
                         print("This is the order_line_item", order_line_item)
                         order_line_item.save()
                 except Sheetmusic.DoesNotExist:
-                    messages.error(request, "One of the titles in your basket wasn't found in our database! Please get in touch for help!")
+                    messages.error(request, "One of the titles in your \
+                                    basket wasn't found in our database! \
+                                    Please get in touch for help!")
                     order.delete()
                     return redirect(reverse('view_basket'))
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                            args=[order.order_number]))
 
         else:
-            messages.error(request, 'There was an error with your form. Please double check your information')
+            messages.error(request, 'There was an error with your form. \
+                                    Please double check your information')
             print(order_form.errors.as_data())
     else:
 
         basket = request.session.get('basket', {})
-        
+
         if not basket:
-            messages.error(request, "There's nothing in your basket at the moment")
+            messages.error(request, "There's nothing in your \
+                                    basket at the moment")
             print(order_form.errors.as_data())
             return redirect(reverse('sheetmusic'))
 
@@ -117,13 +124,13 @@ def checkout(request):
                 })
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
-        
+
         else:
             order_form = OrderForm()
 
     if not stripe_public_key:
-        messages.warning(request, 'Stripe public key is missing. Did you forget to set it in your environment?')
-
+        messages.warning(request, 'Stripe public key is missing. \
+                            Did you forget to set it in your environment?')
 
     template = 'checkout/checkout.html'
     context = {
@@ -163,9 +170,11 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    messages.success(request, f'Order successfully processed! Your order number is {order.order_number}.  \
-                                A confirmation email will be sent to {order.email}. \
-                                Your sheet music is available to download right away')
+    messages.success(request, f'Order successfully processed! \
+                                Your order number is {order.order_number}. \
+                                A confirmation email will be sent to \
+                                {order.email}. Your sheet music is available \
+                                to download right away')
 
     if 'basket' in request.session:
         del request.session['basket']

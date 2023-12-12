@@ -5,9 +5,8 @@ from django.db.models import Q
 from .models import Sheetmusic, Category
 from .forms import SheetmusicForm
 
-# Create your views here.
 
-def all_sheetmusic(request): 
+def all_sheetmusic(request):
     """A view to return all sheetmusic"""
     allsheetmusic = Sheetmusic.objects.all()
     query = None
@@ -16,12 +15,12 @@ def all_sheetmusic(request):
     filtered_allsheetmusic = None
 
     if request.GET:
-        print("Get request made")
         if 'category' in request.GET:
-            
+
             categories = request.GET['category'].split(',')
             print(categories)
-            filtered_allsheetmusic = allsheetmusic.filter(category__name__in=categories)
+            filtered_allsheetmusic = allsheetmusic.filter(
+                category__name__in=categories)
             print(filtered_allsheetmusic)
             categories = Category.objects.filter(name__in=categories)
             print(categories)
@@ -30,10 +29,14 @@ def all_sheetmusic(request):
             print("Searched")
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!")
                 return redirect(reverse('sheetmusic'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(composer_firstname__icontains=query) | Q(composer_lastname__icontains=query)
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query) | Q(
+                    composer_firstname__icontains=query) | Q(
+                         composer_lastname__icontains=query)
             searched_sheetmusic = searched_sheetmusic.filter(queries)
     else:
         print("No get request")
@@ -41,7 +44,7 @@ def all_sheetmusic(request):
     context = {
         'allsheetmusic': allsheetmusic,
         'searched_sheetmusic': searched_sheetmusic,
-        'filtered_sheetmusic' : filtered_allsheetmusic,
+        'filtered_sheetmusic': filtered_allsheetmusic,
         'search_term': query,
         'current_categories': categories,
     }
@@ -49,7 +52,7 @@ def all_sheetmusic(request):
     return render(request, 'sheet_music/sheetmusic.html', context)
 
 
-def sheetmusic_detail(request, sheetmusic_id): 
+def sheetmusic_detail(request, sheetmusic_id):
     """A view to return individual sheet music details """
     sheetmusic = get_object_or_404(Sheetmusic, pk=sheetmusic_id)
     context = {
@@ -73,16 +76,18 @@ def add_sheetmusic(request):
             messages.success(request, 'Sheetmusic added to store!')
             return redirect(reverse('sheetmusic_detail', args=[sheetmusic.id]))
         else:
-            messages.error(request, 'Failed to add sheetmusic. Please ensure form is valid and try again.')
+            messages.error(request, 'Failed to add sheetmusic. \
+            Please ensure form is valid and try again.')
     else:
         form = SheetmusicForm()
-        
+
     template = 'sheet_music/add_sheetmusic.html'
     context = {
         'form': form
     }
 
     return render(request, template, context)
+
 
 @login_required
 def edit_sheetmusic(request, sheetmusic_id):
@@ -101,8 +106,9 @@ def edit_sheetmusic(request, sheetmusic_id):
             messages.success(request, 'Successfully updated sheetmusic!')
             return redirect(reverse('sheetmusic_detail', args=[sheetmusic.id]))
         else:
-            messages.error(request, 'Failed to update sheetmusic. Please ensure form is valid')
-    else:    
+            messages.error(request, 'Failed to update sheetmusic.\
+            Please ensure form is valid')
+    else:
         form = SheetmusicForm(instance=sheetmusic)
         messages.info(request, f'You are editing {sheetmusic.name}')
 
@@ -113,6 +119,7 @@ def edit_sheetmusic(request, sheetmusic_id):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def delete_sheetmusic(request, sheetmusic_id):

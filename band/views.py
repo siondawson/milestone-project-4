@@ -3,7 +3,6 @@ from django.contrib import messages
 from .models import Concert, Member
 from .forms import ConcertForm
 
-# Create your views here.
 
 def index(request):
     """ a view to return the index page """
@@ -21,7 +20,7 @@ def about(request):
         'members': members
     }
     return render(request, 'band/about.html', context)
-    
+
 
 def add_concert(request):
     """ Add a concert to the listings on home page """
@@ -32,10 +31,11 @@ def add_concert(request):
             messages.success(request, 'Concert added!')
             return redirect(reverse('band'))
         else:
-            messages.error(request, 'Failed to add concert. Please check form is valid')
+            messages.error(request, 'Failed to add concert. \
+            Please check form is valid')
     else:
         form = ConcertForm()
-    
+
     template = 'band/add_concert.html'
     context = {
         'form': form,
@@ -54,7 +54,8 @@ def edit_concert(request, concert_id):
             messages.success(request, 'Concert edited!')
             return redirect(reverse('band'))
         else:
-            messages.error(request, 'Concert not updated. Please check form is valid.')
+            messages.error(request, 'Concert not updated. \
+            Please check form is valid.')
     else:
         form = ConcertForm(instance=concert)
         messages.info(request, 'You are editing a concert listing.')
@@ -74,3 +75,4 @@ def delete_concert(request, concert_id):
     concert.delete()
     messages.success(request, 'Concert deleted!')
     return redirect(reverse('band'))
+    

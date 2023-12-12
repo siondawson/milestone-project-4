@@ -7,7 +7,7 @@ from sheet_music.models import Sheetmusic
 
 def view_basket(request):
     """ a view to rednder the basket contents page """
-    
+
     return render(request, 'basket/basket.html')
 
 
@@ -16,7 +16,6 @@ def add_to_basket(request, sheetmusic_id):
 
     sheetmusic = Sheetmusic.objects.get(pk=sheetmusic_id)
     quantity = int(request.POST.get('quantity'))
-    print(quantity)
     redirect_url = request.POST.get('redirect_url')
     basket = request.session.get('basket', {})
 
@@ -27,19 +26,17 @@ def add_to_basket(request, sheetmusic_id):
         messages.success(request, f'Added {sheetmusic.name} to your basket')
 
     request.session['basket'] = basket
-    print(request.session['basket'])
 
     return redirect(redirect_url)
 
 
 def remove_from_basket(request, sheetmusic_id):
     """ Remove item from basket """
-    try:   
+    try:
 
         sheet_music = get_object_or_404(Sheetmusic, pk=sheetmusic_id)
         basket = request.session.get('basket', {})
-        basket.pop(sheetmusic_id)  # currently adding message below this line causing 500 error internal server error.
-        
+        basket.pop(sheetmusic_id)
         request.session['basket'] = basket
         return HttpResponse(status=200)
 

@@ -1,11 +1,11 @@
 from django import forms
 from .models import UserProfile
 
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ('user',)
-
 
     def __init__(self, *args, **kwargs):
         """
@@ -23,7 +23,6 @@ class UserProfileForm(forms.ModelForm):
             'default_county': 'County',
         }
 
-        # self.fields['default_phone_number'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if field != 'default_country':
                 if self.fields[field].required:
@@ -31,5 +30,6 @@ class UserProfileForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
+            self.fields[field].widget.attrs['class'] = 'border-black \
+                                            rounded-0 profile-form-input'
             self.fields[field].label = False

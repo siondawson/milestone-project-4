@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Category(models.Model):
 
@@ -19,7 +17,8 @@ class Category(models.Model):
 
 
 class Sheetmusic(models.Model):
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey('Category', null=True, blank=True,
+                                 on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
     composer_firstname = models.CharField(max_length=254)
     composer_lastname = models.CharField(max_length=254)

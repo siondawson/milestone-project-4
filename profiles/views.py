@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404 
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -25,7 +25,8 @@ def profile(request):
             form.save()
             messages.success(request, 'Profile updates successfully')
         else:
-            messages.error(request, 'Update failed, please ensure form is valid.')
+            messages.error(request, 'Update failed, \
+                        please ensure form is valid.')
 
     else:
         form = UserProfileForm(instance=profile)
@@ -42,9 +43,13 @@ def profile(request):
 
 
 def order_history(request, order_number):
+    """
+    A view to display a users past order confirmation
+    """
     order = get_object_or_404(Order, order_number=order_number)
 
-    messages.info(request, (f'This is a past confirmation for order number {order_number}, a confirmation was sent on the order date.'))
+    messages.info(request, (f'This is a past confirmation for order number \
+                {order_number}, a confirmation was sent on the order date.'))
 
     template = 'checkout/checkout_success.html'
     context = {
@@ -53,16 +58,3 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
-
-
-def download_sheetmusic(request, order_number, pdf_file):
-
-    music = Sheetmusic.objects.get(pdf_file='pdf/TEST_PDF_Albinoni_Introduction_and_allegro_gf1LNl1.pdf')
-    print(music)
-    print(music.pdf_file)
-    print(music.pdf_file.path)
-    downloaded_sheetmusic = music.pdf_file.path
-
-
-    response = FileResponse(open(downloaded_sheetmusic, 'rb'))
-    return response

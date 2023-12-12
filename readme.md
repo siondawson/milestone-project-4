@@ -150,4 +150,13 @@ To handle user accounts, logging in and out. Django allauth was used.
 As there are many templates associated with allauth. Some styling was added on an ongoing basis. Some testing screenshots show unstyled buttons. These were corrected as I went, rather than pushing to github and deploying on heroku again.
 
 
+# Validation
+
+## Python Linter
+
+All python files were checked with the code institue python linter. Three line too long issues were left in place in webhook_handler.py for personal ease of reading as lines were only 1 character too long.
+
+All other other files pass linting with no issues. Screen shots are available in this projects repository.
+
+
 

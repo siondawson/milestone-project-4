@@ -1,10 +1,11 @@
 from django import forms
 from .models import Sheetmusic, Category
 
+
 class SheetmusicForm(forms.ModelForm):
 
     class Meta:
-        model = Sheetmusic 
+        model = Sheetmusic
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
