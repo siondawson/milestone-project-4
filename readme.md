@@ -38,19 +38,30 @@ An app for all content for the band itself: info, videos, concert listings, biog
 
 On loading the home page users are presented with a banner consisting of a graphic of viola scrolls, the bands name and ensemble type. Immidately below this is an iframe with a embedded youtube video that users may play to know what the band looks and sounds like. Below the video is a sub heading informing users of when the band was formed and a paragraph with some initial information on the band. 
 
-This fulfils users stores x 
+This fulfils users stores:
 
-The user is presented with a button linking to the 'about' page where they may learn more about the band and its members. 
+* "As a first time user I want to immediately know the purpose of the site so that I can understand it’s purpose" 
+
+The user is presented with a some short text about the origin of the and button leading them to the 'about' page where they may learn more about the band and its members. 
+
+The user is also presented with a video of the band performing one of their own arrangements for viola quartet. 
+
+This fulfils user story:
+* "As afirst time user I want to be able to learn more about the band so that I can understand who they are and what the band is."
 
 Below is another sub heading before bootstrap cards present the user with a list of the bands upcoming performances. Each card is populated via the database and contains basic information on each performance: date, time, venue, city/towm and a ticket link. As most venue handle ticket sales internally or via an external ticket source a link is provided to the user. 
 
-This fulfils user stories
+This fulfils user stories:
+* "As a returning user I want to see if any new concert dates have been added so that I can plan to see the band live."
+* "As a returning user I want to see if any new information on the band has been added so that I can keep up to date as a fan on the band."
 
 ### About page
 
 A simple page which provides a space for more in depth information on the band, aswell as an image and personal biography of each member. Member information is populated by the database and can only be modified via the django admin panel.
 
-This fulfils user stories x 
+This fulfils user stories:
+* As a first time user I want to be able to learn more about the band so that In can understand who they are and what the band is.
+* "As a returning user I want to see if any new information on the band has been added so that I can keep up to date as a fan on the band."
 
 ### Band app for superusers
 
@@ -58,7 +69,11 @@ Superusers, defined as a band manager have access to spesific functionality with
 
 In addition superusers may edit or delete concert listings via the concert listing bootstrap cards themselves. Appropriately colored 'Edit' and 'Delete' buttons are provided so the superuser may easily edit or delete concert listings. The edit button links to a similar form to the 'add_concert' form which is pre populated with the data for the concert they have selected to edit. The delete link is protected with a modal which warns the superuser on click that deleting the concert is pernament. 
 
-This functionality fulfils user stories xx x x x 
+This functionality fulfils user stories:
+* "As a band manager I want	to be able to add our concert dates to our listings so that I can advertise our performances."
+* "As a band manager I want to be able to update any current concert listings to that I can keep the information up to date."
+* "As a band manager I want to be able to delete any concert listing so that I can remove concerts from the listings which have been cancelled."
+* "As a band manager I want to be able to point users to external sites within concert listings so that I can provide a link to a site where they are able to buy a ticket/ find out more information on our performances."
 
 ## sendemail app
 
