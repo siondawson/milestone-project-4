@@ -37,7 +37,9 @@
                 <p class="my-0">{{ order.street_address2 }}</p>
                 <p class="my-0">{{ order.town_or_city }}</p>
                 <p class="my-0">{{ order.county }}</p>
-                <p class="my-0 pb-3">{{ order.postcode }}</p>
+                <p class="my-0">{{ order.postcode }}</p>
+                <p class="my-0 pb-3">{{ order.country }}</p>
+
             </div>
         </div>
         <div class="row">
@@ -52,7 +54,10 @@
                 <p>Title: {{ item.sheetmusic.name }} (£{{ item.sheetmusic.price }})</p>
             </div>
             <div class="col-12">
-                <h6 class="subtitle-font">Instant Sheetmusic Download: <a class="btn btn-warning" href="{{ item.sheetmusic.pdf_file.url }}" target="_blank" >{{item.sheetmusic.composer_firstname}} {{ item.sheetmusic.composer_lastname}} - {{ item.sheetmusic.name }}</a> </h6>
+                <h6 class="subtitle-font">
+                    Instant Sheetmusic Download: 
+                    <a class="btn btn-warning" href="{{ item.sheetmusic.pdf_file.url }}" target="_blank" download>{{item.sheetmusic.composer_firstname}} {{ item.sheetmusic.composer_lastname}} - {{ item.sheetmusic.name }}</a> 
+                </h6>
             </div>
         </div>
         {% endfor %}
