@@ -20,11 +20,11 @@
         <aside class="col-lg-6">
           <div class="border rounded-4 mb-3 d-flex justify-content-center">
             <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="{{ sheetmusic.image.url }}">
-              <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{{ sheetmusic.image.url }}" alt="{{ sheetmusic.name }}"/>
+              <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{{ sheetmusic.image.url }}" alt="{{ sheetmusic.name }}">
             </a>
           </div>
         </aside>
-        <main class="col-lg-6">
+        <div class="col-lg-6">
           <div class="ps-lg-3">
             <h4 class="title text-dark">
                 {{ sheetmusic.name }}
@@ -39,21 +39,23 @@
             </p>
   
             <div class="row">
-              <dt class="col-3">Composer:</dt>
-              <dd class="col-9">{{ sheetmusic.composer_firstname }} {{ sheetmusic.composer_lastname }}</dd>
+              <dl>
+                <dt class="col-3">Composer:</dt>
+                <dd class="col-9">{{ sheetmusic.composer_firstname }} {{ sheetmusic.composer_lastname }}</dd>
   
               <dt class="col-3">Arranger:</dt>
               <dd class="col-9">{{ sheetmusic.arranger }}</dd>
   
               <dt class="col-3">Category:</dt>
               <dd class="col-9">Viola {{ sheetmusic.category.name }}</dd>
+            </dl>
 
               <div class="col-12">
                 <!-- edit and delete links -->
                 {% if request.user.is_superuser %}
                   <small>
                     <a class="text-info" href="{% url 'edit_sheetmusic' sheetmusic.id %}">Edit</a> |
-                    <a type="button" class="text-danger" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                    <a class="text-danger" data-bs-toggle="modal" data-bs-target="#delete-modal">
                       Delete
                     </a>
                   </small>
@@ -92,7 +94,7 @@
                 <div class="form-row">
                   <div class="col-12">
                     <div class="col-12 mt-3">
-                      <input id="" type="submit" class="btn btn-primary shadow-0" value="Add to Basket">
+                      <input type="submit" class="btn btn-primary shadow-0" value="Add to Basket">
                     </div>
                     <a href="{% url 'sheetmusic' %}" class="btn btn-dark mt-3 mb-3">
                       <span class="icon">
@@ -105,7 +107,7 @@
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
             </form>
           </div>
-        </main>
+        </div>
       </div>
     </div>
   </section>

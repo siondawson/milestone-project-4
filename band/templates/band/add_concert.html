@@ -18,7 +18,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'add_concert' %}" class="form" enctype="multipart/form-data" class="form mb-2">
+                <form method="POST" action="{% url 'add_concert' %}" enctype="multipart/form-data" class="form mb-2">
                     {% csrf_token %}
                     {{ form | crispy }}
                     <div class="pt-2">

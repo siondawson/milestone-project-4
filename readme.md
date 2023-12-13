@@ -252,9 +252,6 @@ Allauth has two main uses:
     This helps fulfil all user stories that deal with these functions. 
 
 
-
-
-
 # Wireframes
 
 Wireframes can be found [here](https://github.com/siondawson/milestone-project-4/tree/main/wireframes).
@@ -263,10 +260,28 @@ Most pages have wireframes created for mobile and desktop and can be viewed via 
 
 Wireframes were not created for pages that are forms. Crispy forms was used to automatcially generate form fields. Each form was set to an appropiate width to suit the screen size and users expectation.
 
+# Testing
 
-# Validation
+## Issues found during testing.
 
-## Python Linter
+One major issue found during testing:
+* Duplicate orders being created in database. Assumed to be an issue with web handler. Many print statements added to log as much as possible to try an discover the source of the problem. Many, many hours spent which we're planned to be spent on adding some additional features. The problem was eventually discovered to be an HTML template variable 'client_secret' on checkout.html with only {} when it required {{}}.
+
+## Validation
+
+Vadlidation screeshots can be found in this projects repository.
+
+### HTML Validation
+
+All html ran through [W3C validator with no errors found](https://validator.w3.org/#validate_by_input). HTML was input by right click > view page source > copy > paste into direct input.
+
+HTML validated in logged in and logged out states.
+
+### CSS Validation
+
+CSS ran through [W3C Validator](https://jigsaw.w3.org/css-validator/) with no errors found.
+
+### Python Linter
 
 All python files were checked with the code institue python linter. Three line too long issues were left in place in webhook_handler.py for personal ease of reading as lines were only 1 character too long.
 
