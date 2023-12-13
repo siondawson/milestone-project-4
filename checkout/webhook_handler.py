@@ -73,7 +73,6 @@ class StripeWH_Handler:
             if value == "":
                 shipping_details.address[field] = None
 
-        print(f"Stripe Charge: {stripe_charge}")
         print(f"Billing Details: {billing_details}")
         print(f"Shipping Details: {shipping_details}")
         print(f"Grand Total: {grand_total}")
@@ -125,20 +124,21 @@ class StripeWH_Handler:
                 status=200)
         else:
             print("Creating new order as it doesn't exist.")
+            order = None
             try:
                 order = Order.objects.create(
                     full_name=shipping_details.name,
                     user_profile=profile,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
-                    country=shipping_details.address.country,
-                    postcode=shipping_details.address.postal_code,
-                    town_or_city=shipping_details.address.city,
                     street_address1=shipping_details.address.line1,
                     street_address2=shipping_details.address.line2,
                     county=shipping_details.address.state,
+                    country=shipping_details.address.country,
+                    postcode=shipping_details.address.postal_code,
+                    town_or_city=shipping_details.address.city,
                     original_basket=basket,
-                    stripe_pid=pid,
+                    stripe_pid=pid
                 )
                 for sheetmusic_id, sheetmusic_data in json.loads(basket).items():
                     sheetmusic = Sheetmusic.objects.get(id=sheetmusic_id)
@@ -153,7 +153,8 @@ class StripeWH_Handler:
                 if order:
                     order.delete()
                 print(f"Error in order creation: {e}")
-                return HttpResponse(content=f'Webhook received: {event["type"]} | ERROR: {e}', status=500)
+                return HttpResponse(
+                    content=f'Webhook received: {event["type"]} | ERROR: {e}', status=500)
 
             self._send_confirmation_email(order)
             print(f'Order created and email sent for order {order.order_number}')

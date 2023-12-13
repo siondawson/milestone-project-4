@@ -32,9 +32,9 @@
     </div>
 </div>
 
-    
 
-    <!-- About -->
+
+<!-- About -->
 <div class="container">
     <div class="row">
         <div class="col-12 mt-5">
@@ -43,8 +43,8 @@
     </div>
     <div class="row">
         <div class="col-12 my-5">
-            <iframe class="home-video d-flex mx-auto" src="https://www.youtube.com/embed/n5VGSz5Tg7g?si=NVf8uBA8BUdVPpoL"
-                title="YouTube video player" frameborder="0"
+            <iframe class="home-video d-flex mx-auto"
+                src="https://www.youtube.com/embed/n5VGSz5Tg7g?si=NVf8uBA8BUdVPpoL" title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
         </div>
@@ -55,7 +55,7 @@
                 Absolute Zero Viola Quartet was formed in 1995.
             </h6>
             <div class="col-12 text-start ms-5 mt-5">
-                <a type="button" href="{% url 'about' %}" class="btn btn-dark btn-lg my-3">Learn More About Us</a>
+                <a href="{% url 'about' %}" class="btn btn-dark btn-lg my-3">Learn More About Us</a>
             </div>
         </div>
         <div class="home col-12 col-md-6 mt-5">
@@ -76,11 +76,9 @@
                     <br>
                 </p>
             </div>
-            
+
         </div>
     </div>
-    
-
 </div>
 <!-- Calendar -->
 <section class="h-custom">
@@ -90,68 +88,68 @@
                 <h2 class="logo-font text-center">Upcoming Concerts </h2>
             </div>
         </div>
-
         {% for concert in concerts %}
+        <div class="row d-flex h-100">
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5>{{ concert.date }}</h5>
+                            </div>
+                            <div>
+                                <h5>{{ concert.venue }} | {{ concert.city }}</h5>
+                            </div>
 
-            <div class="row d-flex h-100">
-                <div class="col">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-            
-                                <div>
-                                    <h5>{{ concert.date }}</h5>
-                                </div>
-                                <div>
-                                    <h5>{{ concert.venue }} | {{ concert.city }}</h5>
-                                </div>
-            
-                                <div class="">
-                                    <small><a class="remove-item text-success" target="_blank" href="{{ concert.tickets }}">Tickets</a></small>
-                                    {% if request.user.is_superuser %}
-                                    | <small><a class="text-primary" href="{% url 'edit_concert' concert.id %}">Edit</a></small> |
-                                    <small><a type="button" class="text-danger" data-bs-toggle="modal" data-bs-target="#delete-modal-{{ concert.id }}">
+                            <div>
+                                <small><a class="remove-item text-success" target="_blank"
+                                        href="{{ concert.tickets }}">Tickets</a></small>
+                                {% if request.user.is_superuser %}
+                                | <small><a class="text-primary"
+                                        href="{% url 'edit_concert' concert.id %}">Edit</a></small> |
+                                <small><a class="text-danger" data-bs-toggle="modal"
+                                        data-bs-target="#delete-modal-{{ concert.id }}">
                                         Delete
                                     </a></small>
-                                </div>
                                 {% endif %}
                             </div>
+                                
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Confirm Delete Modal  -->
-            <!-- (this delete modal code has been reused from my milestone-project-3 as it serves the same purpose) -->
-            <div class="modal fade" id="delete-modal-{{ concert.id }}" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Are you sure?</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Clicking 'delete' will permanently delete this concert!!</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go Back</button>
-                            <a href="{% url 'delete_concert' concert.id %}" class="btn btn-danger">Delete</a>
-                        </div>
+        <!-- Confirm Delete Modal  -->
+        <!-- (this delete modal code has been reused from my milestone-project-3 as it serves the same purpose) -->
+        <div class="modal fade" id="delete-modal-{{ concert.id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Are you sure?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Clicking 'delete' will permanently delete this concert!!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go Back</button>
+                        <a href="{% url 'delete_concert' concert.id %}" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
             </div>
+        </div>
         {% endfor %}
-<div class="row">
-    <div class="col-12 text-center">
-        {% if request.user.is_superuser %}
-            <a type="button" href="{% url 'add_concert' %}" class="btn btn-dark float-right my-5 ">Add Concert</a>
-        {% else %}
-        {% endif %}
+        <!-- Add Concert button -->
+        <div class="row">
+            <div class="col-12 text-center">
+                {% if request.user.is_superuser %}
+                <a href="{% url 'add_concert' %}" class="btn btn-dark float-right my-5 ">Add Concert</a>
+                {% else %}
+                {% endif %}
+            </div>
+        </div>
     </div>
-</div>
-</div>
 </section>
-
-</div>
 
 {% endblock %}
