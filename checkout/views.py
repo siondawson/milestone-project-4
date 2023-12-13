@@ -61,10 +61,8 @@ def checkout(request):
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
-            print(f'stripe pid == {pid}')
             order.stripe_pid = pid
             order.original_basket = json.dumps(basket)
-            print('************saving order')
             order.save()
 
             for sheetmusic_id, sheetmusic_data in basket.items():
@@ -76,7 +74,6 @@ def checkout(request):
                             sheetmusic=sheetmusic,
                             quantity=sheetmusic_data,
                         )
-                        print("This is the order_line_item", order_line_item)
                         order_line_item.save()
                 except Sheetmusic.DoesNotExist:
                     messages.error(request, "One of the titles in your \
@@ -90,7 +87,6 @@ def checkout(request):
         else:
             messages.error(request, 'There was an error with your form. \
                                     Please double check your information')
-            print(order_form.errors.as_data())
     else:
 
         basket = request.session.get('basket', {})
@@ -98,7 +94,6 @@ def checkout(request):
         if not basket:
             messages.error(request, "There's nothing in your \
                                     basket at the moment")
-            print(order_form.errors.as_data())
             return redirect(reverse('sheetmusic'))
 
         current_basket = basket_contents(request)
