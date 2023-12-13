@@ -27,10 +27,10 @@ class ConcertForm(forms.ModelForm):
             self.fields['date'].widget = TextInput(attrs={
                 'placeholder': placeholders['date'],
                 'class': 'border-black rounded-0 mb-3 profile-form-input',
-                'autocomplete': 'off',  # Disable autocomplete for date field
+                'autocomplete': 'off',
             })
-            self.fields['date'].input_formats = ['%d-%m-%Y %H:%M']  # Set the desired input format
-            self.fields['date'].label = _('Date (dd-mm-yyyy hh:mm)')  # Optional: Set a custom label
+            self.fields['date'].input_formats = ['%d-%m-%Y %H:%M']
+            self.fields['date'].label = _('Date (dd-mm-yyyy hh:mm)')
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'
             else:
@@ -38,7 +38,3 @@ class ConcertForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'border-black \
                                             rounded-0 mb-3 profile-form-input'
-
-
-        
-        

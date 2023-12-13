@@ -32,16 +32,18 @@ def add_concert(request):
         form = ConcertForm(request.POST)
         if form.is_valid():
             concert_date = form.cleaned_data['date']
-            today = datetime.now().date()  # Convert to date object
+            today = datetime.now().date()
 
-            if concert_date.date() < today:  # Ensure concert_date is a date object for comparison
-                messages.warning(request, 'Concert date is in the past. The concert was not added.')
+            if concert_date.date() < today:
+                messages.warning(request, 'Concert date is in the past.\
+                                            The concert was not added.')
             else:
                 form.save()
                 messages.success(request, 'Concert added!')
                 return redirect(reverse('band'))
         else:
-            messages.error(request, 'Failed to add concert. Please check form validity.')
+            messages.error(request, 'Failed to add concert.\
+                                    Please check form validity.')
     else:
         form = ConcertForm()
 
