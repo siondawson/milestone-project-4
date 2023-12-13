@@ -337,11 +337,91 @@ Gitpod was a big improvement, however caused a database issue that was resolved 
 
 So that the I could use tutor support effectively the project was eventually moved back to gitpod which has worked perfectly since. 
 
+Static files are hosted at Cloundinary. Hosting via AWS was attempted but encountered problems with dependencies. My mentor suggested using cloudinary.
+
+Cloudinary does not allow for use of pdf files under it's free plan. Therefore for assesment purposes pdf files were replaced with the same images used for sheetmusic product. These open in a new tab. If they we're pdf files an option to download is visible within the viewer. This would only work on the local version of the site. 
+
 ## Features left to implement
 
 With much development time taken up my major challanges in getting webstore base functionality working some features remain to code and include:
 
 * A date/time picker for adding and editing concerts: currently date time data must be entered in the spesific format: 'yyyy-mm-dd mm:hh'. A date picker would improve the experience for superusers adding concerts. 
+
+## Deployment
+This project was created using the code institute template.
+
+## Version Control
+This project was created using Visual Studio Code editor and pushed to 'milestone-project-3', a remote repository in github.
+
+Throughout the project these commands were used to save work and push changes to github via the command line terminal.
+
+1. Type: git add .
+* This command adds files to the staging area before committing.
+2. Type: git commit -m "a message goes in here explaining what chanes were made"
+* This command commits changes to the local repository
+3. Type: git push
+* This command commits all changes to the remote GitHub repository.
+
+## Clone the repository to your machine
+1. Navigate to the github repository
+2. Click on the code drop down button.
+3. Click HTTPS
+4. Copy repository link
+4. Open your IDE (git must be installed)
+5. Type git clone (copied git url) into the terminal.
+6. The project will now have been cloned on your machine.
+
+### Heroku
+This project is deployed via Heroku. Heroku is connected to this projects github repository. With every push the deployed Heroku app is updated.
+
+### Database (Elephant SQL)
+The deployed website is connected to a database hosted by Elephant SQL.
+
+#### Project deployed via Heroku with the following steps.
+1. Ensure requrements.txt is up to date wuth correct versions.
+2. Create Procfile.
+3. Create new file in root directory.
+4. Name it "Procfile"
+5. Enter following command in the file: "web: gunicorn absolute_zero.wsgi:application"
+6. Commit new files to github
+7. Navigate to Heroku
+8. Click create new app
+9. Name the app (absolute-zero-viola-quartet)
+10. Enter confirg vars.
+11. Disable collection of static files with COLLECTSTATIC: 1
+12. Navigate to Heroku deploy tab
+13. Click connect to github
+14. Search for correct repository
+15. Connect
+16. Click Deploy
+17. Process complete
+
+#### Cloudinary 
+
+Static files are hosted by cloudinary. 
+
+## Credits
+The code content of this software was createe by Sion Dawson
+
+## Media
+
+The video shown on the home page of the site was created by me on request of Absolute Zero Viola Quartet. A selection of 'screen-grabs' have been taken from this video to serve as website images. They are used on the about page member biogs and on the contact page. 
+
+All other images were provided by Ross Cohen of Absolute Zero Violas.
+
+## sheetmusic store images and text
+
+The small selection of sheetmusic items added to the store were copied direclly from Absolute Zero Viola Quartet's existing store. Images, descriptions and prices.
+
+## About text
+
+Text was copied and sometimes adapted from Absolute Zero Viola Quartet's existing website. 
+
+Biography of Philip Heyman was provided by him.
+
+## Acknowledgement
+
+Thankyou to my tutor Daisy McGirr for her help and guidance in this project. Thanks also to my wife Samantha (code institute alumni) for helping me overcome problems and discussing ideas.
 
 
 
