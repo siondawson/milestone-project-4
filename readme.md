@@ -32,7 +32,32 @@ The webstore was largely created by following code institutes 'Boutique Ado' pro
 
 ## Web presence for the band
 
+# User Experience Design
+
+## User Stories
+
+USER STORIES GO HERE
+
 # Structure
+
+## Main Navigation (header)
+
+A nav bar has been created in base.html. All other html.files are extended from this base. Therefore the main nav is consistent and available on all pages and at all times. If/ else statements are used to show and hide links that require login dependant if a user is logged in or out. 
+
+Simple link text is provided for the user so that may understand on the first pass the purpose of all links. Dropdown menus are provided for the sheetmusic store and user profile. If a user is logged out an option is displayed for them to login or create an account.
+
+The main navigation helps fulfil user stories:
+* "As a first time user I want to immediately know the purpose of the site so that I can understand it’s purpose" 
+* "As a first time user I want to be able to easily navigate the site so that I can easily explore."
+
+## Footer
+
+In a similar manner to the main nav a simple footer has been designed. This has been added since wireframes were designed. Absolute Zero only have one well followed facebook page so it seemed appropriate to feature that as the sole link in the footer. Users who wish to find out more via the facebook group may follow this link. 
+
+This helps fulfil user stories:
+* "returning user I want to be able to easily view social media accounts that the band own so that I can learn more about them and view more content beyond the website"
+
+
 
 ## Band App
 
@@ -45,19 +70,22 @@ On loading the home page users are presented with a banner consisting of a graph
 This fulfils users stores:
 
 * "As a first time user I want to immediately know the purpose of the site so that I can understand it’s purpose" 
+* "As a concert organisier/ fixer I want To find out what the band has to offer and know exactly what they sound and look like so that I can decide wether they fit the concert/ event/ festival that I" am planning
 
 The user is presented with a some short text about the origin of the and button leading them to the 'about' page where they may learn more about the band and its members. 
 
 The user is also presented with a video of the band performing one of their own arrangements for viola quartet. 
 
 This fulfils user story:
-* "As afirst time user I want to be able to learn more about the band so that I can understand who they are and what the band is."
+* "As a first time user I want to be able to learn more about the band so that I can understand who they are and what the band is."
 
 Below is another sub heading before bootstrap cards present the user with a list of the bands upcoming performances. Each card is populated via the database and contains basic information on each performance: date, time, venue, city/towm and a ticket link. As most venue handle ticket sales internally or via an external ticket source a link is provided to the user. 
+
 
 This fulfils user stories:
 * "As a returning user I want to see if any new concert dates have been added so that I can plan to see the band live."
 * "As a returning user I want to see if any new information on the band has been added so that I can keep up to date as a fan on the band."
+* "As a concert organisier/ fixer I want To find out what the band has to offer and know exactly what they sound and look like so that I can decide wether they fit the concert/ event/ festival that I" am planning
 
 ### About page
 
@@ -78,6 +106,8 @@ This functionality fulfils user stories:
 * "As a band manager I want to be able to update any current concert listings to that I can keep the information up to date."
 * "As a band manager I want to be able to delete any concert listing so that I can remove concerts from the listings which have been cancelled."
 * "As a band manager I want to be able to point users to external sites within concert listings so that I can provide a link to a site where they are able to buy a ticket/ find out more information on our performances."
+
+Currently superuser must input date/time data in format: 'yyyy-mm-dd mm:hh'. Limitations in development time means that a datepicker will need to wait until the next release. Currently only superusers may add or edit concerts, this is likely only one person so this information can be passed to them.
 
 ## sendemail app
 
@@ -147,7 +177,7 @@ This functionality fulfils user story:
 Superusers may also delete sheetmusic from the store. Accessed via the same location as the 'edit' function, an appropriately colored delete link is provided. When the user clicks this link, a bootstrap modal is triggered where the user may confirm deletion or go back. 
 
 This fulfils user story:
-As manager of the store	I want to be able to delete sheet music items so that I can remove any which I no longer wish to sell.
+* "As manager of the store I want to be able to delete sheet music items so that I can remove any which I no longer wish to sell."
 
 A note on delete functionality:
 
@@ -260,7 +290,15 @@ Most pages have wireframes created for mobile and desktop and can be viewed via 
 
 Wireframes were not created for pages that are forms. Crispy forms was used to automatcially generate form fields. Each form was set to an appropiate width to suit the screen size and users expectation.
 
+The main nav end design differs slighly from the wireframe. Dropdown menus were added rather than a single menu link for ease of navigation and quick filtering of sheetmusic. The about link has been removed and is only accessible for users in the main body of the page if they wish to learn more. 
+
+Footer was not featured in wireframes. 
+
+Nav appears in index wireframe.
+
 # Testing
+
+Full testing can be found here.
 
 ## Issues found during testing.
 
@@ -286,6 +324,24 @@ CSS ran through [W3C Validator](https://jigsaw.w3.org/css-validator/) with no er
 All python files were checked with the code institue python linter. Three line too long issues were left in place in webhook_handler.py for personal ease of reading as lines were only 1 character too long.
 
 All other other files pass linting with no issues. Screen shots are available in this projects repository.
+
+## Challenges during developement
+
+This project has had a series of difficulties to overcome, partially as it's sheer size has been much larger in terms of volume of files. Throughout the developmenet process many errors were encountered with many arising from confliting dependencies. With a heavy reliance on boutique ado to guide the overall structure and flow of the sheetmusic store, beginning the development process with better knowledge of how dependences such as crispy forms, psycopg2 and django countries interact with one another would been benefitial. Many hours of development time were spent with the help of CI tutors finding a suitable balance of dependancies. 
+
+In my midpoint meeting my mentor advised me that whenever she begins a new django app she begins with a pip install of all the latest dependencies, ensuring they are supported and dont conflict. 
+
+Another challenge was development environment. This project was created with code institues full template designed for codeanywhere. At the start of a period earmarked for development time codeanywhere went down with no knowledge of when it would go back up, therefore the project was moved to gitpod on the advice of the tutors.
+
+Gitpod was a big improvement, however caused a database issue that was resolved by setting the project up locally in vscode and deleting files associated with codeanywhere. 
+
+So that the I could use tutor support effectively the project was eventually moved back to gitpod which has worked perfectly since. 
+
+## Features left to implement
+
+With much development time taken up my major challanges in getting webstore base functionality working some features remain to code and include:
+
+* A date/time picker for adding and editing concerts: currently date time data must be entered in the spesific format: 'yyyy-mm-dd mm:hh'. A date picker would improve the experience for superusers adding concerts. 
 
 
 

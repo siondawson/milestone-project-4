@@ -23,7 +23,7 @@ def profile(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updates successfully')
+            messages.success(request, 'Default billing info updated successfully')
         else:
             messages.error(request, 'Update failed, \
                         please ensure form is valid.')

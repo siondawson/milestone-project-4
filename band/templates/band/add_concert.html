@@ -21,7 +21,7 @@
                 <form method="POST" action="{% url 'add_concert' %}" enctype="multipart/form-data" class="form mb-2">
                     {% csrf_token %}
                     {{ form | crispy }}
-                    <div class="pt-2">
+                    <div class="mt-3">
                         <a class="btn btn-danger" href="{% url 'band' %}">Cancel</a>
                         <button class="btn btn-dark" type="submit">Add Concert</button>
                     </div>
