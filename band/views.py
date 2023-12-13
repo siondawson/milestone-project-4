@@ -1,18 +1,16 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from datetime import date, timedelta
+from django.utils import timezone
+from datetime import datetime
 from .models import Concert, Member
 from .forms import ConcertForm
 
 
 def index(request):
-    """ a view to return the index page """
-    concerts = Concert.objects.all().order_by('date')
-    startdate = date.today()
-    enddate = startdate + timedelta(days=6)
-    pastconcert = Concert.objects.filter(date__range=[startdate, enddate])
-    print(pastconcert)
-    print(concerts)
+    """A view to return the index page"""
+    today = timezone.now().date()
+    concerts = Concert.objects.filter(date__gte=today).order_by('date')
+
     context = {
         'concerts': concerts
     }
@@ -29,16 +27,21 @@ def about(request):
 
 
 def add_concert(request):
-    """ Add a concert to the listings on home page """
+    """ Add a concert to the listings on the home page """
     if request.method == 'POST':
         form = ConcertForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Concert added!')
-            return redirect(reverse('band'))
+            concert_date = form.cleaned_data['date']
+            today = datetime.now().date()  # Convert to date object
+
+            if concert_date.date() < today:  # Ensure concert_date is a date object for comparison
+                messages.warning(request, 'Concert date is in the past. The concert was not added.')
+            else:
+                form.save()
+                messages.success(request, 'Concert added!')
+                return redirect(reverse('band'))
         else:
-            messages.error(request, 'Failed to add concert. \
-            Please check form is valid')
+            messages.error(request, 'Failed to add concert. Please check form validity.')
     else:
         form = ConcertForm()
 
