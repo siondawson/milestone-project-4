@@ -87,7 +87,7 @@ class StripeWH_Handler:
 
         order_exists = False
         attempt = 1
-        while attempt <= 10:
+        while attempt <= 5:
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
@@ -102,6 +102,18 @@ class StripeWH_Handler:
                     grand_total=grand_total,
                     original_basket=basket,
                     stripe_pid=pid
+                    print("IEXACT " full_name__iexact)
+                    print("IEXACT " email__iexact)
+                    print("IEXACT " phone_number__iexact)
+                    print("IEXACT " country__iexact)
+                    print("IEXACT " postcode__iexact)
+                    print("IEXACT " town_or_city__iexact)
+                    print("IEXACT " street_address1__iexact)
+                    print("IEXACT " street_address2__iexact)
+                    print("IEXACT " county__iexact)
+                    print("IEXACT " grand_total)
+                    print("IEXACT " original_basket__iexact)
+                    print("IEXACT " stripe_pid)
                 )
                 order_exists = True
                 break
@@ -130,6 +142,16 @@ class StripeWH_Handler:
                     county=shipping_details.address.state,
                     original_basket=basket,
                     stripe_pid=pid,
+                    print("wh order" full_name)
+                    print("wh order" user_profile)
+                    print("wh order" email)
+                    print("wh order" phone_number)
+                    print("wh order" country)
+                    print("wh order" postcode)
+                    print("wh order" town_or_city)
+                    print("wh order" street_address1)
+                    print("wh order" street_address2)
+                    print("wh order" county)
                 )
                 for sheetmusic_id, sheetmusic_data in json.loads(basket).items():
                     sheetmusic = Sheetmusic.objects.get(id=sheetmusic_id)
