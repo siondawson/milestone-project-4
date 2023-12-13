@@ -281,6 +281,25 @@ Allauth has two main uses:
 2. To allow superusers extra functionality where they may add, edit, delete sheetmusic and concert listings.
     This helps fulfil all user stories that deal with these functions. 
 
+# Database Schema
+
+ElephantSql tiny turtle plan was used to host the database. Full database schema can be viewed below.
+
+user: for user accounts
+
+Concert: for concert details. Only basic details were required. No further link to more detailed concert were needed. Ticket link intentionally links users to external sites. CRUD functionality via views created.
+
+Enquiry: an unused database schema. sendemail app replaced this databases intended function as enquiries did not need to be saved at this stage. Model left in place in case deletion caused unforseen errors.
+
+Band_member: Simply used to store band memeber name, image and biog. More efficient than hard coding. Access only via django admin.
+
+sheetmusic: for sheetmusic store items.
+
+
+
+
+![Database schema ER diagram](static/media/website-images/absolute-zero-er-diagram.png)
+
 
 # Wireframes
 
