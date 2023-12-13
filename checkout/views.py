@@ -61,8 +61,10 @@ def checkout(request):
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
+            print(f'stripe pid == {pid}')
             order.stripe_pid = pid
             order.original_basket = json.dumps(basket)
+            print('************saving order')
             order.save()
 
             for sheetmusic_id, sheetmusic_data in basket.items():
