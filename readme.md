@@ -365,6 +365,8 @@ Cloudinary does not allow for use of pdf files under it's free plan. Therefore f
 With much development time taken up my major challanges in getting webstore base functionality working some features remain to code and include:
 
 * A date/time picker for adding and editing concerts: currently date time data must be entered in the spesific format: 'yyyy-mm-dd mm:hh'. A date picker would improve the experience for superusers adding concerts. 
+    * A quick, imperfect solution was added in final stages before submission. Placeholder text and labels were added to add and edit concert forms. Users may enter datetime data in the format spesified, however django alters this when users to go edit concerts to an 'american' date format. Users may still enter data as prompted by the label. This is not an ideal solution but is better than nothing.
+    * Also in the final stages a check was added so that concert listings will remove any concerts that are in the past. This helps improves the user experience by not advertising concerts that have passed.
 
 ## Deployment
 This project was created using the code institute template.
