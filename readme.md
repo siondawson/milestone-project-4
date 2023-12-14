@@ -36,7 +36,45 @@ The webstore was largely created by following code institutes 'Boutique Ado' pro
 
 ## User Stories
 
-USER STORIES GO HERE
+| **As a**                       | **I want**                                                                            | **so that I can…**                                                                                           |
+| ------------------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| General User Stories           |
+| first time user                | To immediately know the purpose of the site.                                          | understand it’s purpose                                                                                      |
+| first time user                | to be able to learn more about the band                                               | understand who they are and what the band is.                                                                |
+| first time user                | Be able send a message to the band.                                                   | See if they are available for my event/ want to collaborate/ to answer my question about the store.          |
+| first time user                | to be able to easily navigate the site.                                               | easily explore.                                                                                              |
+| first time user                | See if the band are playing somewhere near me                                         | Plan to go and see them and find out more information.                                                       |
+| returning user                 | To see if any new concert dates have been added.                                      | Plan to see the band live.                                                                                   |
+| returning user                 | To see if any new information on the band has been added.                             | Keep up to date as a fan on the band.                                                                        |
+| returning user                 | to be able to easily view social media accounts that the band own.                    | learn more about them and view more content beyond the website                                               |
+| concert organisier/ fixer      | To find out what the band has to offer and know exactly what they sound and look like | Decide wether they fit the concert/ event/ festival that I am planning                                       |
+| Sheetmusic Store               |
+| Shopper                        | To browse the sheet music store.                                                      | Browse sheetmusic.                                                                                           |
+| Shopper                        | To easily sign up or login                                                            | make a purchase                                                                                              |
+| Shopper                        | To search the sheet music store.                                                      | See if the store caters to a title that I am looking for.                                                    |
+| Shopper                        | Filter music by type.                                                                 | Find sheet music for my specific ensemble (duo, trio, quartet, ensemble)                                     |
+| Shopper                        | Find out more about a particular title.                                               | Decide if I want to buy it.                                                                                  |
+| Shopper                        | Add sheetmusic to the shopping basket.                                                | Keep browsing the store, then make a purchase of more than one.                                              |
+| shopper                        | know how much basket total is as i browse and add sheet music to it                   | know how much I am spending.                                                                                 |
+| Shopper                        | view items in my shopping basket                                                      | decide if I am happy with my purchase.                                                                       |
+| shopper                        | remove sheetmusic from my purchase                                                    | decide not to buy that sheet music                                                                           |
+| Shopper                        | Make a secure payment online                                                          | buy the sheetmusic selected in my basket                                                                     |
+| Shopper                        | Save my billing details                                                               | Check out more quickly next time                                                                             |
+| shopper                        | update my billing details                                                             | change them when needed.                                                                                     |
+| Shopper                        | Have instant access to any pdf which I purchase.                                      | View the product i have bought immediately after purchase.                                                   |
+| Shopper                        | Review previous orders.                                                               | Know when and what I have purchased.                                                                         |
+| Shopper                        | Return to previous sheetmusic that I have bought.                                     | Download them again.                                                                                         |
+| Shopper                        | To be able to easily get in touch with someone.                                       | Ask a question or report an issue.                                                                           |
+| Band Managers / Store Managers |
+| manager of the store           | To add new arrangements to the store.                                                 | Sell them via the store.                                                                                     |
+| manager of the store           | Update all details of sheet music products in the store.                              | Keep them up to date and correct any errors.                                                                 |
+| manager of the store           | Delete sheet music items.                                                             | Remove any which I no longer wish to sell.                                                                   |
+| manager of the store           | save a customers contact details                                                      | contact them if there is an error with an order or sheet music                                               |
+| band manager                   | Add our concert dates to our listings.                                                | Advertise our performances.                                                                                  |
+| band manager                   | Update any current concert listings.                                                  | Keep the information up to date.                                                                             |
+| band manager                   | Delete any concert listing.                                                           | Remove concerts from the listings which have been cancelled.                                                 |
+| band manager                   | Point users to external sites within concert listings.                                | Provide a link to a site where they are able to buy a ticket/ find out more information on our performances. |
+| band manager                   | receive emails from potential bookers or customers who have questions.                | get performance opportunities for the band have receive emails from customers.
 
 # Structure
 
